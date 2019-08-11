@@ -1,0 +1,35 @@
+h1 = t(:".title")
+button.btn-warning = link_to "イベント作成", new_event_path
+
+#row
+  - @events.each do |event|
+    .col-6
+      table.table
+        tbody
+          tr
+            th scope="row" = t(:'activerecord.attributes.event.title')
+            td = link_to event.title, event 
+          tr
+            th scope="row" = t(:'activerecord.attributes.event.gig_date')
+            td = event.gig_date
+          tr
+            th scope="row" = t(:'activerecord.attributes.event.user_id')
+            td = event.user_id
+          tr
+            th scope="row" = t(:'activerecord.attributes.event.target_join_num')
+            td = event.target_join_num
+          tr
+            th scope="row" = t(:'activerecord.attributes.event.region')
+            td = event.region
+          tr
+            th scope="row" = t(:'activerecord.attributes.event.place')
+            td = event.place
+          tr
+            th scope="row" = t(:'activerecord.attributes.event.target_price')
+            td = event.target_price
+          tr
+            th scope="row" = t(:'activerecord.attributes.event.description')
+            td = event.description
+      = link_to "編集", edit_event_path(event), class: "btn btn-info"
+      |  
+      = link_to "削除", event, method: :delete, data: { confirm: "削除しますか？" }, class: "btn btn-info"

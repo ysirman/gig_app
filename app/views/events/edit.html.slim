@@ -1,0 +1,6 @@
+h1 = t(:".title")
+= render 'form', event: @event
+.mt-3
+  = link_to "表示", @event, class: "btn btn-info"
+  |  
+  = link_to "戻る", events_path, class: "btn btn-info"

@@ -1,0 +1,29 @@
+= form_with(model: @event, local: true) do |f|
+  - if @event.errors.any?
+    #error_explanation
+      ul
+        - @event.errors.full_messages.each do |message|
+          li= message
+  .field
+    = f.label :title
+    = f.text_field :title
+  .field
+    = f.label :gig_date
+    = f.datetime_field :gig_date
+  .field
+    = f.label :target_join_num
+    = f.number_field :target_join_num
+  .field
+    = f.label :region
+    = f.text_field :region
+  .field
+    = f.label :place
+    = f.text_field :place
+  .field
+    = f.label :target_price
+    = f.number_field :target_price
+  .field
+    = f.label :description
+    = f.text_area :description
+  .actions
+    = f.submit :class=>"btn btn-info"
