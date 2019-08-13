@@ -1,0 +1,26 @@
+h1 = t(:".title")
+
+#row
+  - @users.each do |user|
+    .col-4.card
+      .card-body
+        p.card-text
+          = 
+          | #{user.name}
+          br/
+          | @
+          | #{user.login_name}
+          br/
+          = user.profile
+          br/
+          = t(:"activerecord.attributes.user.men_num")
+          | ：
+          = t(:"activerecord.attributes.user.women_num")
+          | ＝#{user.men_num}
+          | ：#{user.women_num}
+          br/
+          = t(:"activerecord.attributes.user.created_at")
+          | : #{user.created_at}
+          br/
+          = t(:"activerecord.attributes.user.updated_at")
+          | : #{user.updated_at}

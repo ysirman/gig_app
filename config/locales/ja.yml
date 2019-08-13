@@ -16,6 +16,8 @@ ja:
     edit:
       title: "イベント編集"
   users:
+    index:
+      title: "バンド一覧"
     show:
       title: "プロフィール"
     edit:

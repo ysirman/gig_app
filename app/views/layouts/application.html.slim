@@ -12,13 +12,9 @@ html
       .container
         p.navbar-text.pull-right
           - if user_signed_in?
-            | Logged in as 
-            strong = link_to current_user.name, "/users/#{current_user.id}"
-            br/
-            = link_to 'Edit profile', edit_user_registration_path, class: 'navbar-link'
-            | ｜
+            = link_to current_user.name, "/users/#{current_user.id}"
+            | ／
             = link_to 'ログアウト', destroy_user_session_path, method: :delete, class: 'navbar-link'
-            | .
           - else
             = link_to "アカウント登録", new_user_registration_path, class: 'navbar-link'
             | ｜
@@ -29,6 +25,8 @@ html
           - if alert
             p.alert.alert-danger= alert
         nav
+          = link_to "バンド一覧", users_path
+          | 　
           = link_to "イベント一覧", events_path
     .container.mb-5
       = yield
