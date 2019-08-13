@@ -1,5 +1,5 @@
 h1 = t(:".title")
-button.btn-warning = link_to "イベント作成", new_event_path
+= link_to "イベント作成", new_event_path, class: "btn btn-info"
 
 #row
   - @events.each do |event|
@@ -26,7 +26,9 @@ button.btn-warning = link_to "イベント作成", new_event_path
             td = event.place
           tr
             th scope="row" = t(:'activerecord.attributes.event.target_price')
-            td = event.target_price
+            td
+              = event.target_price
+              | 円
           tr
             th scope="row" = t(:'activerecord.attributes.event.description')
             td = event.description

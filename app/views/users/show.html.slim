@@ -1,0 +1,24 @@
+h1= t(:".title")
+p
+  = 
+  | #{@user.name}
+  br/
+  | @
+  | #{@user.login_name}
+p
+  = @user.profile
+p
+  = t(:"activerecord.attributes.user.men_num")
+  | : #{@user.men_num}
+  | 人
+p
+  = t(:"activerecord.attributes.user.women_num")
+  | : #{@user.women_num}
+  | 人
+p
+  = t(:"activerecord.attributes.user.created_at")
+  | : #{@user.created_at}
+p
+  = t(:"activerecord.attributes.user.updated_at")
+  | : #{@user.updated_at}
+= link_to t(:"helpers.action.user.edit"), edit_user_registration_path

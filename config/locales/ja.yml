@@ -37,43 +37,14 @@ ja:
       work: 作品
     attributes:
       user:
-        login_name: ユーザー名
-        first_name: 名
-        last_name: 姓
-        course_id: コース
-        description: 自己紹介
-        email: Email
-        twitter_account: Twitterアカウント
-        facebook_url: Facebook URL
-        blog_url: ブログURL
-        feed_url: ブログのフィードURL
-        github_account: GitHubアカウント
-        slack_account: Slackアカウント
-        password: パスワード
-        password_confirmation: パスワード（確認）
-        current_password: 現在のパスワード
-        icon: 画像ファイル
-        icon_file_name: 画像ファイル名
-        icon_file_size: 画像ファイルのサイズ
-        icon_content_type: 画像ファイルの種類
-        notify_comment: コメント通知
-        job: 職業
-        os: 利用OS
-        study_place: 主な学習場所
-        experience: プログラミング経験
-        organization: 現在の所属組織
-        company: 会社
+        login_name: ユーザーID
+        name: バンド名
+        region: 活動地域
+        profile: バンド紹介
+        men_num: 男
+        women_num: 女
         created_at: 開始日
         updated_at: 最終活動日時
-        nda: 秘密保持契約
-        graduated_on: 卒業日
-        adviser: アドバイザー
-        trainee: 研修生
-        job_seeking: 就職活動中
-        retired_on: リタイア日
-        free: 無料ユーザー
-        avatar: プロフィール画像
-        retire_reason: 退会理由
       event:
         title: タイトル
         gig_date: 開催日
