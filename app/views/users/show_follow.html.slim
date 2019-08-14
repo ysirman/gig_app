@@ -1,0 +1,10 @@
+- provide(:title, "hogegetitle")
+.row
+  .col-md-8
+    - if @users.any?
+      ul.users.follow
+        - @users.each do |user|
+          = link_to user.name, user 
+          br/
+          | @
+          | #{user.login_name}

@@ -22,3 +22,26 @@ p
   = t(:"activerecord.attributes.user.updated_at")
   | : #{@user.updated_at}
 = link_to t(:"helpers.action.user.edit"), edit_user_registration_path
+p
+  .stats
+    a href="#{following_user_path(@user)}" 
+      strong#following.stat
+      | フォロー中：
+      = @user.following.count
+    | ／
+    a href="#{followers_user_path(@user)}" 
+      strong#followers.stat
+      | フォロワー
+      = @user.followers.count
+- if user_signed_in?
+  p
+    - unless current_user?(@user)
+      #follow_form
+        - if current_user.following?(@user)
+          = form_for(current_user.active_follow_relations.find_by(followed_id: @user.id), html: { method: :delete }) do |f|
+            = f.submit "Unfollow", class: "btn"
+        - else
+          = form_for(current_user.active_follow_relations.build) do |f|
+            div= hidden_field_tag :followed_id, @user.id
+            = f.submit "Follow", class: "btn btn-primary"
+

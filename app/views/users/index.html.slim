@@ -5,8 +5,7 @@ h1 = t(:".title")
     .col-4.card
       .card-body
         p.card-text
-          = 
-          | #{user.name}
+          = link_to user.name, user 
           br/
           | @
           | #{user.login_name}
@@ -24,3 +23,15 @@ h1 = t(:".title")
           br/
           = t(:"activerecord.attributes.user.updated_at")
           | : #{user.updated_at}
+          br/
+          .stats
+            a href="#{following_user_path(user)}" 
+              strong#following.stat
+              | フォロー中：
+              = user.following.count
+            | ／
+            a href="#{followers_user_path(user)}" 
+              strong#followers.stat
+              | フォロワー
+              = user.followers.count
+
