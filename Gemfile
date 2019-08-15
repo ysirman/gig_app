@@ -44,6 +44,8 @@ gem 'jquery-rails'
 gem 'bootstrap', '~> 4.1.1'
 gem 'rails-i18n'
 gem 'devise'
+# vue用の設定
+gem 'foreman'
 
 
 group :development, :test do
