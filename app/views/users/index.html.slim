@@ -1,37 +1,50 @@
 h1 = t(:".title")
 
-#row
+.row
   - @users.each do |user|
-    .col-4.card
-      .card-body
-        p.card-text
-          = link_to user.name, user 
-          br/
-          | @
-          | #{user.login_name}
-          br/
-          = user.profile
-          br/
-          = t(:"activerecord.attributes.user.men_num")
-          | ：
-          = t(:"activerecord.attributes.user.women_num")
-          | ＝#{user.men_num}
-          | ：#{user.women_num}
-          br/
-          = t(:"activerecord.attributes.user.created_at")
-          | : #{user.created_at}
-          br/
-          = t(:"activerecord.attributes.user.updated_at")
-          | : #{user.updated_at}
-          br/
-          .stats
-            a href="#{following_user_path(user)}" 
-              strong#following.stat
-              | フォロー中：
-              = user.following.count
-            | ／
-            a href="#{followers_user_path(user)}" 
-              strong#followers.stat
-              | フォロワー
-              = user.followers.count
+    .col.s12.m4
+      .card.hoverable
+        .card-content
+          p.card-text
+            = link_to user.name, user 
+            br/
+            | @
+            | #{user.login_name}
+            br/
+            = user.profile
+            br/
+            = t(:"activerecord.attributes.user.men_num")
+            | ：
+            = t(:"activerecord.attributes.user.women_num")
+            | ＝#{user.men_num}
+            | ：#{user.women_num}
+            br/
+            = t(:"activerecord.attributes.user.created_at")
+            | : #{user.created_at}
+            br/
+            = t(:"activerecord.attributes.user.updated_at")
+            | : #{user.updated_at}
+            br/
+            .stats
+              a href="#{following_user_path(user)}" 
+                strong#following.stat
+                | フォロー中：
+                = user.following.count
+              | ／
+              a href="#{followers_user_path(user)}" 
+                strong#followers.stat
+                | フォロワー
+                = user.followers.count
+        - unless current_user?(user)
+          .card-action
+            #follow_form
+              - if current_user.following?(user)
+                = form_for(current_user.active_follow_relations.find_by(followed_id: user.id), html: { method: :delete }) do |f|
+                  .btn.disabled Follow
+                  = f.submit "Unfollow", class: "waves-effect waves-light btn-small"
+              - else
+                = form_for(current_user.active_follow_relations.build) do |f|
+                  div= hidden_field_tag :followed_id, user.id
+                  = f.submit "Follow", class: "waves-effect waves-light btn-small"
+                  .btn.disabled Unfollow
 

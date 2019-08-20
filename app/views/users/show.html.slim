@@ -21,7 +21,8 @@ p
 p
   = t(:"activerecord.attributes.user.updated_at")
   | : #{@user.updated_at}
-= link_to t(:"helpers.action.user.edit"), edit_user_registration_path
+- if current_user?(@user)
+  = link_to t(:"helpers.action.user.edit"), edit_user_registration_path
 p
   .stats
     a href="#{following_user_path(@user)}" 

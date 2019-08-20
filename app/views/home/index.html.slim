@@ -1,7 +1,20 @@
+.row
+  form.col.s12
+    .row
+      .input-field.col.s12.m3
+        input#place.validate type="text" /
+        label for="place"  場所を指定
+      .input-field.col.s12.m7
+        input#keyword.validate type="text" /
+        label for="keyword"  検索キーワード
+      a.col.s12.m2.waves-effect.waves-light.btn.mt-3 検索
+.row
+  - @events.each do |event|
+    .col.s12.m6
+      .card.hoverable
+        .card-content
+          .card-text.row
+            h6.col.s8= link_to event.title, event
+          .card-action= event.gig_date
 h1 Home#index
 p Find me in app/views/home/index.html.slim
-
-p 
-= link_to "イベントページ", :events 
-
-= javascript_pack_tag 'hello_vue'

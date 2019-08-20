@@ -41,7 +41,8 @@ gem 'bootsnap', '>= 1.1.0', require: false
 
 gem 'slim-rails'
 gem 'jquery-rails'
-gem 'bootstrap', '~> 4.1.1'
+gem 'materialize-sass'
+gem 'material_icons'
 gem 'rails-i18n'
 gem 'devise'
 # vue用の設定
