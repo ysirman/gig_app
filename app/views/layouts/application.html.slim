@@ -13,15 +13,6 @@ html
         .nav-wrapper
           = link_to "GigJp", root_path, class: 'brand-logo'
           ul.right.hide-on-med-and-down
-            li
-              = link_to events_path do
-                i.material-icons.left search
-                | イベントを探す
-            li
-              = link_to users_path do
-                i.material-icons.left search
-                | バンドを探す
-          ul.right.hide-on-med-and-down
             - if user_signed_in?
               li
                 = link_to "/users/#{current_user.id}"
@@ -34,6 +25,22 @@ html
                 = link_to "ログイン", new_user_session_path, class: 'waves-effect waves-light btn-small'
               li
                 = link_to "アカウント登録", new_user_registration_path, class: 'waves-effect waves-light btn-small'
+          ul.right.hide-on-med-and-down
+            li
+              = link_to events_path do
+                i.material-icons.left search
+                | イベントを探す
+            li
+              = link_to users_path do
+                i.material-icons.left search
+                | バンドを探す
+    - unless current_page?(root_path)
+      nav.breadcrumbs.orange.darken-1
+        .nav-wrapper
+          .col.s12
+            = link_to 'TOP', root_path, class: 'breadcrumb'
+            a.breadcrumb href="#!"  Second
+            a.breadcrumb href="#!"  Third
     header
       - if notice
         .blue.lighten-3

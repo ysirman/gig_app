@@ -21,9 +21,26 @@ $primary-color: color("orange", "base") !default;
 $primary-color-light: lighten($primary-color, 15%) !default;
 $primary-color-dark: darken($primary-color, 15%) !default;
 
-$secondary-color: color("gray", "darken-3") !default;
+$secondary-color: color("teal", "base") !default;
 $success-color: color("green", "base") !default;
 $error-color: color("red", "base") !default;
 $link-color: color("light-blue", "darken-1") !default;
 @import 'materialize';
 @import '_spacing';
+
+nav {
+  .nav-wrapper {
+    padding: 0px 12px;
+  }
+}
+.breadcrumbs {
+  height: 32px;
+  line-height: 32px;
+  .breadcrumb {
+    font-size: 12px;
+  }
+  .breadcrumb:before {
+    font-size: 20px;
+    margin: 2px 8px 0 8px;
+  }
+}
