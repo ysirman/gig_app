@@ -44,3 +44,21 @@ nav {
     margin: 2px 8px 0 8px;
   }
 }
+
+.follow-relation {
+  .is-active {
+    background-color: blue;
+  }
+  .is-active:before {
+    content: "フォロー中";
+  }
+  .is-active:hover {
+    background-color: red;
+  }
+  .is-active:hover:before{
+    content: "フォロー解除";
+  }
+  .is-inactive:before {
+    content: "フォロー";
+  }
+}

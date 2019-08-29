@@ -37,12 +37,5 @@ p
 - if user_signed_in?
   p
     - unless current_user?(@user)
-      #follow_form
-        - if current_user.following?(@user)
-          = form_for(current_user.active_follow_relations.find_by(followed_id: @user.id), html: { method: :delete }) do |f|
-            = f.submit "Unfollow", class: "btn"
-        - else
-          = form_for(current_user.active_follow_relations.build) do |f|
-            div= hidden_field_tag :followed_id, @user.id
-            = f.submit "Follow", class: "btn btn-primary"
-
+      - follow_relation_id = current_user.following?(@user) ? current_user.active_follow_relations.find_by(followed_id: @user.id).id : nil
+      .js-follow-relation(data-follow-relation-id="#{follow_relation_id}" data-followed-id="#{@user.id}")

@@ -8,5 +8,7 @@ Rails.application.routes.draw do
       get :following, :followers
     end
   end
-  resources :follow_relations,       only: [:create, :destroy]
+  namespace "api" do
+    resources :follow_relations, only: [:create, :destroy]
+  end
 end
