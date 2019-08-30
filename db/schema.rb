@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_13_150002) do
+ActiveRecord::Schema.define(version: 2019_08_30_231550) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,7 +21,7 @@ ActiveRecord::Schema.define(version: 2019_08_13_150002) do
     t.string "user_id", default: "", null: false
     t.integer "target_join_num"
     t.string "region", null: false
-    t.string "place"
+    t.string "location"
     t.integer "target_price"
     t.text "description"
     t.datetime "created_at", null: false

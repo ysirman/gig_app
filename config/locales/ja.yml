@@ -29,17 +29,6 @@ ja:
     models:
       user: ユーザー
       event: イベント
-      practice: プラクティス
-      company: 会社
-      comment: コメント
-      report: 日報
-      learning_time: 学習時間
-      page: Docs
-      question: Q&A
-      product: 提出物
-      announcement: お知らせ
-      article: ブログ記事
-      work: 作品
     attributes:
       user:
         login_name: ユーザーID
@@ -56,7 +45,7 @@ ja:
         user_id: ユーザーID
         target_join_num: 予定参加数
         region: 地域
-        place: 開催場所
+        location: 開催場所
         target_price: 予定参加費
         description: イベント詳細
     enums:
