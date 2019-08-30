@@ -8,6 +8,9 @@ ja:
       default: "%Y年%m月%d日(%a) %H:%M"
       short: "%Y/%m/%d %H:%M"
       time_only: "%H:%M"
+      year: "%Y"
+      day: "%m/%d(%a)"
+      time: "%H:%m"
   events:
     index:
       title: "イベント"

@@ -17,7 +17,7 @@
 
 //* Materialize */
 @import "materialize/components/color-variables";
-$primary-color: color("orange", "base") !default;
+$primary-color: color("grey", "darken-4") !default;
 $primary-color-light: lighten($primary-color, 15%) !default;
 $primary-color-dark: darken($primary-color, 15%) !default;
 
@@ -28,9 +28,18 @@ $link-color: color("light-blue", "darken-1") !default;
 @import 'materialize';
 @import '_spacing';
 
+.content-heading {
+  font-size: 22px;
+  font-weight: 700;
+}
+
 nav {
   .nav-wrapper {
     padding: 0px 12px;
+  }
+  .brand-logo,
+  ul a {
+    color: #1a237e;
   }
 }
 .breadcrumbs {
@@ -42,6 +51,90 @@ nav {
   .breadcrumb:before {
     font-size: 20px;
     margin: 2px 8px 0 8px;
+  }
+}
+
+.parallax-container {
+  height: 360px;
+}
+
+.load-more {
+  line-height: 2.4;
+  background-color: #DDD;
+  a {
+    display: inline-block;
+    width: 100%;
+    color: #666;
+  }
+}
+.load-more:hover {
+  background-color: #CCC;
+}
+
+.eventList {
+  .card-content {
+    padding: 12px 24px;
+  }
+  .date {
+    margin-right: 12px;
+    padding: 24px 0px;
+    background-color: #EEE;
+  }
+  .year,
+  .time {
+    font-size: 14px;
+    //color: #333;
+  }
+  .day,
+  .join {
+    line-height: 2;
+    font-size: 22px;
+    font-weight: 700;
+  }
+  .info {
+    padding-left: 12px;
+    margin-right: 12px;
+    border-left: 1px solid #DDD;
+    border-right: 1px solid #DDD;
+  }
+  .venue {
+    color: #888;
+    i {
+      font-size: 13px;
+    }
+  }
+  .title {
+    margin-bottom: 10px;
+    font-size: 1.4rem;
+    font-weight: 700;
+  }
+  .genre {
+    li {
+      display: inline-block;
+      color: grey;
+      line-height: 1em;
+      background-color: #EEE;
+      border-radius: 12px;
+      padding: 6px 8px;
+      margin-right: 4px;
+      font-size: 11px;
+    }
+  }
+}
+
+.event-btn {
+  margin-top: 16px;
+  .btn {
+    height: 24px;
+    padding: 0;
+    line-height: 24px;
+    font-size: 12px;
+    i {
+      font-size: 8px;
+    }
+  }
+  .btn:first-child {
+    margin-right: 10px;
   }
 }
 

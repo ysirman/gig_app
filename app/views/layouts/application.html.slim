@@ -7,79 +7,10 @@ html
     = csp_meta_tag
     = stylesheet_link_tag    'application', media: 'all'
     = javascript_include_tag 'application'
-    = javascript_pack_tag "application"
+    = javascript_pack_tag 'application'
   body
-    .navbar-fixed
-      nav
-        .nav-wrapper
-          = link_to "GigJp", root_path, class: 'brand-logo'
-          ul.right.hide-on-med-and-down
-            - if user_signed_in?
-              li
-                = link_to "/users/#{current_user.id}"
-                  i.material-icons.left person
-                  | #{current_user.name}
-              li
-                = link_to 'ログアウト', destroy_user_session_path, method: :delete, class: 'waves-effect waves-light btn-small'
-            - else
-              li
-                = link_to "ログイン", new_user_session_path, class: 'waves-effect waves-light btn-small'
-              li
-                = link_to "アカウント登録", new_user_registration_path, class: 'waves-effect waves-light btn-small'
-          ul.right.hide-on-med-and-down
-            li
-              = link_to events_path do
-                i.material-icons.left search
-                | イベントを探す
-            li
-              = link_to users_path do
-                i.material-icons.left search
-                | バンドを探す
-    - unless current_page?(root_path)
-      nav.breadcrumbs.orange.darken-1
-        .nav-wrapper
-          .col.s12
-            = link_to 'TOP', root_path, class: 'breadcrumb'
-            a.breadcrumb href="#!"  Second
-            a.breadcrumb href="#!"  Third
-    header
-      - if notice
-        .blue.lighten-3
-          .container
-            p= notice
-      - if alert
-        .blue.lighten-3
-          .container
-            p= alert
-      - if current_page?(root_path)
-        .parallax-container
-          .parallax
-            = image_tag 'top.jpg'
+    = render 'header'
     main
       .container
         = yield
-    footer.page-footer
-      .container
-        .row
-          .col.l6.s12
-            h5.white-text Footer Content
-            p.grey-text.text-lighten-4 You can use rows and columns here to organize your footer content.
-          .col.l4.offset-l2.s12
-            h5.white-text Links
-            ul
-              li
-                a.grey-text.text-lighten-3 href="#!"  Link 1
-              li
-                a.grey-text.text-lighten-3 href="#!"  Link 2
-              li
-                a.grey-text.text-lighten-3 href="#!"  Link 3
-              li
-                a.grey-text.text-lighten-3 href="#!"  Link 4
-      .footer-copyright
-        .container
-          | © 2014 Copyright Text
-          a.grey-text.text-lighten-4.right href="#!"  More Links
-javascript:
-  $(document).ready(function(){
-    $('.parallax').parallax();
-  });
+    = render 'footer'

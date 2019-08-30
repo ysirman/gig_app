@@ -1,6 +1,6 @@
-.row
+.row.mt-2
   form.col.s12
-    .row
+    .row.mb-0
       .input-field.col.s12.m3
         input#place.validate type="text" /
         label for="place"  場所を指定
@@ -9,12 +9,32 @@
         label for="keyword"  検索キーワード
       a.col.s12.m2.waves-effect.waves-light.btn.mt-3 検索
 .row
+  h2.content-heading 新着イベント
   - @events.each do |event|
-    .col.s12.m6
-      .card.hoverable
-        .card-content
-          .card-text.row
-            h6.col.s8= link_to event.title, event
-          .card-action= event.gig_date
-h1 Home#index
-p Find me in app/views/home/index.html.slim
+    .col.s12
+      .eventList.card.hoverable.mb-0
+        .card-content.valign-wrapper.row.mb-2
+          .date.center-align.col.s12.m2
+            .year= l(event.gig_date, format: :year)
+            .day= l(event.gig_date, format: :day)
+            .time= l(event.gig_date, format: :time)
+          .info.col.s12.m8
+            .title= link_to event.title, event
+            .venue
+              i.material-icons.gray location_on
+              = event.place
+            ul.genre
+              li POPS
+              li ROCK
+          .num.center-align.col.s12.m2
+            .join 5
+            .target 定員 10
+            .event-btn.row
+              .btn.waves-effect.waves-light.col.s5 参加
+              .btn.waves-effect.waves-light.col.s6 クリップ
+.load-more.center-align.s12
+  a href="#" イベントをもっと見る
+.row
+  h2.content-heading 新着バンド
+.load-more.center-align.s12.mb-5
+  a href="#" バンドをもっと見る
