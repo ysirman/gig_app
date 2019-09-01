@@ -27,12 +27,13 @@
             ul.genre
               li POPS
               li ROCK
-          .num.center-align.col.s12.m2
-            .join 5
-            .target 定員 10
-            .event-btn.row
-              .btn.waves-effect.waves-light.col.s5 参加
-              .btn.waves-effect.waves-light.col.s6 クリップ
+          .participation.center-align.col.s12.m2
+            .current= Participation.where(event_id: event.id).count
+            .target 定員 #{event.target_join_num}
+            .btn-group.row
+              - if user_signed_in?
+                .js-participation(data-participation-id="#{current_user.participating?(event)}" data-event-id="#{event.id}")
+                .btn.waves-effect.waves-light.col.s6 クリップ
 .load-more.center-align.s12
   a href="#" イベントをもっと見る
 .row

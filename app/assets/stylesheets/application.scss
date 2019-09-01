@@ -83,14 +83,50 @@ nav {
   .year,
   .time {
     font-size: 14px;
-    //color: #333;
+    color: #333;
   }
   .day,
-  .join {
+  .participation .current {
     line-height: 2;
     font-size: 22px;
     font-weight: 700;
   }
+  .participation {
+    .btn-group {
+      margin-top: 16px;
+      .btn {
+        height: 24px;
+        padding: 0;
+        line-height: 24px;
+        font-size: 12px;
+      }
+      .participate-btn {
+        padding: 0px;
+        .btn {
+          width: 100%;
+          margin-right: 10px;
+        }
+        .is-active {
+          background-color: blue;
+        }
+        .is-active:before {
+          content: "参加中";
+        }
+        .is-active:hover {
+          background-color: red;
+        }
+        .is-active:hover:before{
+          content: "キャンセル";
+          letter-spacing: 0px;
+          font-size: 11px;
+        }
+        .is-inactive:before {
+          content: "参加";
+        }
+      }
+    }
+  }
+
   .info {
     padding-left: 12px;
     margin-right: 12px;
@@ -119,22 +155,6 @@ nav {
       margin-right: 4px;
       font-size: 11px;
     }
-  }
-}
-
-.event-btn {
-  margin-top: 16px;
-  .btn {
-    height: 24px;
-    padding: 0;
-    line-height: 24px;
-    font-size: 12px;
-    i {
-      font-size: 8px;
-    }
-  }
-  .btn:first-child {
-    margin-right: 10px;
   }
 }
 

@@ -28,16 +28,11 @@ class User < ApplicationRecord
     following.include?(other_user)
   end
 
-  # イベントに参加する
-  def participate(event)
-    events << event
-  end
-  # イベント参加を取り消す
-  def unparticipate(event)
-    participations.find_by(event_id: event.id).destroy
-  end
-  # イベントに参加していたらtrueを返す
+  # イベントに参加していたら id を返す
   def participating?(event)
-    participations.include?(event)
+    participation = participations.find_by(event_id: event.id)
+    if participation
+      participation.id
+    end
   end
 end

@@ -16,3 +16,4 @@
 // const imagePath = (name) => images(name, true)
 
 require('../follow_relation.js')
+require('../participation.js')
