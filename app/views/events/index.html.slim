@@ -1,36 +1,30 @@
-h4 = t(:".title")
-= link_to "イベント作成", new_event_path, class: "btn btn-info"
-
-#row
-  - @events.each do |event|
-    .col-6
-      table.table
-        tbody
-          tr
-            th scope="row" = t(:'activerecord.attributes.event.title')
-            td = link_to event.title, event 
-          tr
-            th scope="row" = t(:'activerecord.attributes.event.gig_date')
-            td = event.gig_date
-          tr
-            th scope="row" = t(:'activerecord.attributes.event.user_id')
-            td = event.user_id
-          tr
-            th scope="row" = t(:'activerecord.attributes.event.target_join_num')
-            td = event.target_join_num
-          tr
-            th scope="row" = t(:'activerecord.attributes.event.region')
-            td = event.region
-          tr
-            td = event.location
-          tr
-            th scope="row" = t(:'activerecord.attributes.event.target_price')
-            td
-              = event.target_price
-              | 円
-          tr
-            th scope="row" = t(:'activerecord.attributes.event.description')
-            td = event.description
-      = link_to "編集", edit_event_path(event), class: "btn btn-info"
-      |  
-      = link_to "削除", event, method: :delete, data: { confirm: "削除しますか？" }, class: "btn btn-info"
+.row
+  .col.s12.m3
+    =render 'sidebar'
+  .col.s12.m9
+    h2.content-heading =t(:".title")
+    - @events.each do |event|
+      .eventList.card.hoverable.mb-0
+        .card-content.valign-wrapper.row.mb-2
+          .date.center-align.col.s12.m2
+            .year= l(event.gig_date, format: :year)
+            .day= l(event.gig_date, format: :day)
+            .time= l(event.gig_date, format: :time)
+          .info.col.s12.m8
+            .title= link_to event.title, event
+            .venue
+              i.material-icons.gray location_on
+              = event.region
+              = event.location
+            ul.genre
+              li POPS
+              li ROCK
+          .participation.center-align.col.s12.m2
+            .current= Participation.where(event_id: event.id).count
+            .target 定員 #{event.target_join_num}
+            .btn-group.row
+              - if user_signed_in?
+                .js-participation(data-participation-id="#{current_user.participating?(event)}" data-event-id="#{event.id}")
+                .btn.waves-effect.waves-light.col.s6 クリップ
+              - else
+                =link_to "参加", new_user_registration_path, class:'btn waves-effect waves-light col s6 offset-s3'

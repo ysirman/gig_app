@@ -1,0 +1,41 @@
+#sidebar.card.grey.lighten-4
+  .box.searchCondition
+    form action="https://techplay.jp/event/search" method="get" name="event" 
+      .input-field
+        input#keyword.validate type="text" placeholder="ポップス 天神 椎名林檎"
+        label for="keyword" 検索キーワード
+      .input-field
+        select#pref_text.select-width-full.select-height-s.select-noShadow name="pref" 
+          option disabled="disabled" selected="selected" value=""  都道府県を選択
+          option value="1"  北海道
+          option value="2"  青森県
+          option value="3"  岩手県
+        label エリア
+      .input-field
+        input.datepicker type="text" placeholder="From" 
+        label for="keyword" 開催日
+      .searchCondition-button.center-align
+        button.btn.sm.searchCondition-submit type="submit"  絞り込む
+javascript:
+  $(document).ready(function() {
+    $('input#input_text, textarea#textarea2').characterCounter();
+  });
+  $(document).ready(function(){
+    $('select').formSelect();
+  });
+  $(document).ready(function(){
+    $('.datepicker').datepicker({
+      i18n:{
+        months: ["1月", "2月", "3月", "4月", "5月", "6月", "7月", "8月", "9月", "10月", "11月", "12月"],
+        monthsShort: ["1月", "2月", "3月", "4月", "5月", "6月", "7月", "8月", "9月", "10月", "11月", "12月"],
+        weekdaysShort: ["日", "月", "火", "水", "木", "金", "土"],
+        weekdaysAbbrev: ["日", "月", "火", "水", "木", "金", "土"],
+        done: "決定",
+        clear: "クリア",
+        cancel: "キャンセル"
+      },
+      showClearBtn: true,
+      autoClose: true,
+      format: "yyyy年mm月dd日(ddd)"
+    });
+  });

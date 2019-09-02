@@ -28,9 +28,23 @@ $link-color: color("light-blue", "darken-1") !default;
 @import 'materialize';
 @import '_spacing';
 
+.container {
+  width: 1220px;
+  padding-top: 18px;
+}
+
+.btn {
+  border-radius: 8px;
+}
+
 .content-heading {
   font-size: 22px;
   font-weight: 700;
+}
+
+#sidebar {
+  padding: 10px 20px 20px 20px;
+  border-top: 5px solid #212121;
 }
 
 nav {

@@ -15,16 +15,6 @@ export default {
       buttonLabel: "フォロー"
     }
   },
-  computed: {
-    defaultLabel() {
-      let defaultLabel = ["フォロー","フォロー"]
-      if (this.relationId) {
-        defaultLabel[0] = "フォロー中"
-        defaultLabel[1] = "フォロー解除"
-      }
-      return defaultLabel
-    }
-  },
   methods: {
     token () {
       const meta = document.querySelector('meta[name="csrf-token"]')
@@ -32,13 +22,11 @@ export default {
     },
     push () {
       if (this.relationId) {
-        console.log('unfollow----------')
-        console.log(this.relationId)
         this.unfollow()
+        M.toast({html: 'フォロー解除しました'})
       } else {
-        console.log('follow----------')
-        console.log(this.relationId)
         this.follow()
+        M.toast({html: 'フォローしました'})
       }
     },
     follow () {

@@ -22,8 +22,10 @@ export default {
     push () {
       if (this.participationId) {
         this.unparticipate()
+        M.toast({html: 'キャンセルしました'})
       } else {
         this.participate()
+        M.toast({html: '参加しました'})
       }
     },
     participate () {

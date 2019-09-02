@@ -7,6 +7,7 @@ ja:
     formats:
       default: "%Y年%m月%d日(%a) %H:%M"
       short: "%Y/%m/%d %H:%M"
+      date_only: "%Y年%m月%d日(%a)"
       time_only: "%H:%M"
       year: "%Y"
       day: "%m/%d(%a)"
@@ -37,8 +38,8 @@ ja:
         profile: バンド紹介
         men_num: 男
         women_num: 女
-        created_at: 開始日
-        updated_at: 最終活動日時
+        created_at: 登録日
+        updated_at: 更新日
       event:
         title: タイトル
         gig_date: 開催日
@@ -74,19 +75,6 @@ ja:
           started: 開始
           complete: 完了
           not_complete: 未完
-  target:
-    student: 現役生
-    job_seeking: 就職活動中
-    mentor: メンター
-    graduate: 卒業生
-    adviser: アドバイザー
-    all: 全員
-    redire: リタイア
-    retired: リタイア
-    inactive: 非アクティブ
-    year_end_party: 忘年会
-    trainee: 研修生
-    admin: 管理者
   helpers:
     submit:
       create: 登録する

@@ -4,6 +4,7 @@
       = link_to "GigJp", root_path, class: 'brand-logo'
       ul.right.hide-on-med-and-down
         - if user_signed_in?
+          li= link_to "イベント作成", new_event_path, class: "btn btn-info"
           li
             = link_to "/users/#{current_user.id}"
               i.material-icons.left person
@@ -25,7 +26,7 @@
             i.material-icons.left search
             | バンドを探す
 - unless current_page?(root_path)
-  nav.breadcrumbs.orange.darken-1
+  nav.breadcrumbs.grey.darken-4
     .nav-wrapper
       .col.s12
         = link_to 'TOP', root_path, class: 'breadcrumb'

@@ -1,5 +1,5 @@
 .row.mt-2
-  form.col.s12
+  form.col.s12.m8.offset-m2
     .row.mb-0
       .input-field.col.s12.m3
         input#place.validate type="text" /
@@ -9,9 +9,9 @@
         label for="keyword"  検索キーワード
       a.col.s12.m2.waves-effect.waves-light.btn.mt-3 検索
 .row
-  h2.content-heading 新着イベント
-  - @events.each do |event|
-    .col.s12
+  .col.s12.m8.offset-m2
+    h2.content-heading 新着イベント
+    - @events.each do |event|
       .eventList.card.hoverable.mb-0
         .card-content.valign-wrapper.row.mb-2
           .date.center-align.col.s12.m2
@@ -34,9 +34,12 @@
               - if user_signed_in?
                 .js-participation(data-participation-id="#{current_user.participating?(event)}" data-event-id="#{event.id}")
                 .btn.waves-effect.waves-light.col.s6 クリップ
-.load-more.center-align.s12
-  a href="#" イベントをもっと見る
+              - else
+                =link_to "参加", new_user_registration_path, class:'btn waves-effect waves-light col s6 offset-s3'
+    .load-more.center-align.s12
+      a href="#" イベントをもっと見る
 .row
-  h2.content-heading 新着バンド
-.load-more.center-align.s12.mb-5
-  a href="#" バンドをもっと見る
+  .col.s12.m8.offset-m2
+    h2.content-heading 新着バンド
+    .load-more.center-align.s12.mb-5
+      a href="#" バンドをもっと見る
