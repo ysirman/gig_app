@@ -40,8 +40,12 @@ class EventsController < ApplicationController
   end
 
   def search
-    @events = Event.search(params).page(params[:page])
-    render :index
+    if params[:keyword].present? || params[:gig_date].present? || params[:region].present?
+      @events = Event.search(params).page(params[:page])
+      render :index
+    else
+      redirect_to events_url
+    end
   end
 
   private

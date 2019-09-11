@@ -10,7 +10,7 @@ class Event < ApplicationRecord
   paginates_per 10
 
   def self.search(params)
-    unless params[:keyword].empty?
+    if params[:keyword].present?
       keywords = params[:keyword].split(/[[:blank:]]/)
       queries = keywords.map do |keyword|
         Event.where('title LIKE ?', "%#{keyword}%")
@@ -21,13 +21,13 @@ class Event < ApplicationRecord
         scope.or(query)
       end
     end
-    unless params[:gig_date].empty?
+    if params[:gig_date].present?
       m = params[:gig_date].match(/^(\d{4})年(\d{1,2})月(\d{1,2})日\(.\)$/)
       gig_date = DateTime.new(m[1].to_i, m[2].to_i, m[3].to_i)
       query = Event.where('gig_date >= ?', "#{gig_date}")
       result = result ? result.merge(query) : query
     end
-    unless params[:region].empty?
+    if params[:region].present?
       query = Event.where(region: "#{params[:region]}")
       result = result ? result.merge(query) : query
     end
