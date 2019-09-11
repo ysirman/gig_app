@@ -1,4 +1,10 @@
-h1 = t(:".title")
-p Find me in app/views/events/new.html.slim
+- add_breadcrumb "イベント新規作成", new_event_path
 
-= render 'form', event: @event
+.row
+  .col.s12.m6.push-m3
+    h2.content-heading =t(:".title")
+    .row
+      .col.s12
+        .event.card.hoverable
+          .card-content
+            = render 'form', event: @event

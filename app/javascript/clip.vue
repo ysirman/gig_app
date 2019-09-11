@@ -1,6 +1,6 @@
 <template>
-  <div class="col s12 participate-btn">
-    <a class="btn waves-effect waves-light" :class=" participationId ? 'is-active' : 'is-inactive' " @click="push" >
+  <div class="col s12 clip-btn">
+    <a class="btn waves-effect waves-light" :class=" clipId ? 'is-active' : 'is-inactive' " @click="push" >
     </a>
   </div>
 </template>
@@ -8,10 +8,10 @@
 <script>
 
 export default {
-  props: ['firstParticipationId', 'eventId'],
+  props: ['firstClipId', 'eventId'],
   data () {
     return {
-      participationId: this.firstParticipationId
+      clipId: this.firstClipId
     }
   },
   methods: {
@@ -20,12 +20,12 @@ export default {
       return meta ? meta.getAttribute('content') : ''
     },
     push () {
-      if (this.participationId) {
+      if (this.clipId) {
         this.unparticipate()
-        M.toast({html: 'キャンセルしました'})
+        M.toast({html: 'クリップを削除しました'})
       } else {
         this.participate()
-        M.toast({html: '参加しました'})
+        M.toast({html: 'クリップしました'})
       }
     },
     participate () {
@@ -33,7 +33,7 @@ export default {
         'event_id': this.eventId
       }
 
-      fetch(`/api/participations`, {
+      fetch(`/api/clips`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json; charset=utf-8',
@@ -48,14 +48,14 @@ export default {
           return response.json()
         })
         .then(json => {
-          this.participationId = json['id']
+          this.clipId = json['id']
         })
         .catch(error => {
           console.warn('Failed to parsing', error)
         })
     },
     unparticipate () {
-      fetch(`/api/participations/${this.participationId}`, {
+      fetch(`/api/clips/${this.clipId}`, {
         method: 'DELETE',
         headers: {
           "Content-Type": "application/json; charset=utf-8",
@@ -66,7 +66,7 @@ export default {
         redirect: 'manual'
       })
         .then(response => {
-          this.participationId = null
+          this.clipId = null
         })
         .catch(error => {
           console.warn('Failed to parsing', error)

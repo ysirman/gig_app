@@ -2,7 +2,7 @@ class EventsController < ApplicationController
   before_action :set_event, only: [:show, :edit, :update, :destroy]
 
   def index
-    @events = Event.all
+    @events = Event.all.order(gig_date: :desc).page(params[:page])
   end
 
   def new
@@ -22,7 +22,7 @@ class EventsController < ApplicationController
     if @event.save
       redirect_to @event, notice: t(:"flash.success.create")
     else
-      render :new
+       :new
     end
   end
 
@@ -39,6 +39,11 @@ class EventsController < ApplicationController
     redirect_to events_url, notice: t(:"flash.success.destroy")
   end
 
+  def search
+    @events = Event.search(params).page(params[:page])
+    render :index
+  end
+
   private
     def set_event
       @event = Event.find(params[:id])
@@ -51,7 +56,7 @@ class EventsController < ApplicationController
         :user_id, 
         :target_join_num, 
         :region, 
-        :place, 
+        :location, 
         :target_price, 
         :description)
     end

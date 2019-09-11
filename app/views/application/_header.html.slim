@@ -1,7 +1,7 @@
 .navbar-fixed
   nav
     .nav-wrapper.white
-      = link_to "GigJp", root_path, class: 'brand-logo'
+      = link_to "Gig", root_path, class: 'brand-logo'
       ul.right.hide-on-med-and-down
         - if user_signed_in?
           li= link_to "イベント作成", new_event_path, class: "btn btn-info"
@@ -25,13 +25,17 @@
           = link_to users_path do
             i.material-icons.left search
             | バンドを探す
-- unless current_page?(root_path)
+            
+- if breadcrumbs.present?
   nav.breadcrumbs.grey.darken-4
     .nav-wrapper
       .col.s12
-        = link_to 'TOP', root_path, class: 'breadcrumb'
-        a.breadcrumb href="#!"  Second
-        a.breadcrumb href="#!"  Third
+        - breadcrumbs.each do |breadcrumb|
+          - if breadcrumbs.last != breadcrumb
+            = link_to breadcrumb.name, breadcrumb.path, class: 'breadcrumb'
+          - else
+            span.breadcrumb = breadcrumb.name
+
 header
   - if notice
     .blue.lighten-3

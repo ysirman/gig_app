@@ -1,8 +1,13 @@
+- add_breadcrumb "バンド一覧", users_path
+
 .row
   .col.s12.m3
-    =render 'sidebar'
+    =render 'sidenav_search'
   .col.s12.m9
     h2.content-heading =t(:".title")
+    div
+      | #{@users.total_count}件中#{@users.offset_value + 1}
+      | 〜#{@users.offset_value + @users.length}件を表示しています。
     .row
       - @users.each do |user|
         .col.s12.m6
@@ -42,3 +47,4 @@
                       strong#followers.stat
                       | フォロワー
                       = user.followers.count
+    = paginate @users

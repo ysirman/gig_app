@@ -1,41 +1,50 @@
-h1= t(:".title")
-p
-  = 
-  | #{@user.name}
-  br/
-  | @
-  | #{@user.login_name}
-p
-  = @user.profile
-p
-  = t(:"activerecord.attributes.user.men_num")
-  | : #{@user.men_num}
-  | 人
-p
-  = t(:"activerecord.attributes.user.women_num")
-  | : #{@user.women_num}
-  | 人
-p
-  = t(:"activerecord.attributes.user.created_at")
-  | : #{@user.created_at}
-p
-  = t(:"activerecord.attributes.user.updated_at")
-  | : #{@user.updated_at}
-- if current_user?(@user)
-  = link_to t(:"helpers.action.user.edit"), edit_user_registration_path
-p
-  .stats
-    a href="#{following_user_path(@user)}" 
-      strong#following.stat
-      | フォロー中：
-      = @user.following.count
-    | ／
-    a href="#{followers_user_path(@user)}" 
-      strong#followers.stat
-      | フォロワー
-      = @user.followers.count
-- if user_signed_in?
-  p
-    - unless current_user?(@user)
-      - follow_relation_id = current_user.following?(@user) ? current_user.active_follow_relations.find_by(followed_id: @user.id).id : nil
-      .js-follow-relation(data-follow-relation-id="#{follow_relation_id}" data-followed-id="#{@user.id}")
+- add_breadcrumb "バンド一覧", users_path
+- add_breadcrumb @user.name, @user
+
+.row
+  - if current_user?(@user)
+    .col.s12.m3
+      =render 'sidenav_mypage'
+  - else current_user?(@user)
+    .col.s12.m3.right
+      =render 'sidenav_user'
+  .col.s12.m9
+    h2.content-heading =t(:".title")
+    .row
+      .col.s12
+        .user.card
+          .card-content
+            .row.valign-wrapper.row
+              .name.col.s8
+                = link_to @user.name, @user 
+                br/
+                | @ #{@user.login_name}
+                br/
+                = @user.profile
+              .col.s4
+                - if user_signed_in?
+                  - unless current_user?(@user)
+                      - follow_relation_id = current_user.following?(@user) ? current_user.active_follow_relations.find_by(followed_id: @user.id).id : nil
+                      .js-follow-relation(data-follow-relation-id="#{follow_relation_id}" data-followed-id="#{@user.id}")
+                - else
+                  =link_to "フォロー", new_user_registration_path, class:'btn waves-effect waves-light'
+            .row
+              .col.s12
+                = t(:"activerecord.attributes.user.men_num")
+                | ：
+                = t(:"activerecord.attributes.user.women_num")
+                | ＝#{@user.men_num}
+                | ：#{@user.women_num}
+                br/
+                = t(:"activerecord.attributes.user.created_at")
+                | : #{l(@user.created_at, format: :date_only)}
+                .stats
+                  a href="#{following_user_path(@user)}" 
+                    strong#following.stat
+                    | フォロー中：
+                    = @user.following.count
+                  | ／
+                  a href="#{followers_user_path(@user)}" 
+                    strong#followers.stat
+                    | フォロワー
+                    = @user.followers.count

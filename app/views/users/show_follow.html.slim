@@ -1,6 +1,22 @@
-- provide(:title, "hogegetitle")
+- add_breadcrumb "バンド一覧", users_path
+- add_breadcrumb @user.name, @user
+- if current_page?(following_user_path)
+  - add_breadcrumb "フォロー中", following_user_path
+- if current_page?(followers_user_path)
+  - add_breadcrumb "フォロワー", followers_user_path
+
 .row
-  .col-md-8
+  - if current_user?(@user)
+    .col.s12.m3
+      =render 'sidenav_mypage'
+  - else current_user?(@user)
+    .col.s12.m3.right
+      =render 'sidenav_user'
+  .col.s12.m9
+    - if current_page?(following_user_path)
+      h2.content-heading フォロー中
+    - else
+      h2.content-heading フォロワー
     - if @users.any?
       ul.users.follow
         - @users.each do |user|

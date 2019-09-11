@@ -17,3 +17,4 @@
 
 require('../follow_relation.js')
 require('../participation.js')
+require('../clip.js')

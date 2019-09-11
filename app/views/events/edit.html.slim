@@ -1,3 +1,7 @@
+- add_breadcrumb "イベント一覧", events_path
+- add_breadcrumb @event.title, @event
+- add_breadcrumb "編集", edit_event_path
+
 h1 = t(:".title")
 = render 'form', event: @event
 .mt-3

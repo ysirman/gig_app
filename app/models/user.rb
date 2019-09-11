@@ -14,6 +14,11 @@ class User < ApplicationRecord
   has_many :participations, dependent: :destroy
   has_many :events, through: :participations
   
+  # クリップ参加の設定
+  has_many :clips, dependent: :destroy
+  has_many :clip_events, through: :clips, source: :event
+
+  paginates_per 20
   
   # ユーザーをフォローする
   def follow(other_user)
@@ -33,6 +38,14 @@ class User < ApplicationRecord
     participation = participations.find_by(event_id: event.id)
     if participation
       participation.id
+    end
+  end
+
+  # クリップしていたら id を返す
+  def clipping?(event)
+    clip = clips.find_by(event_id: event.id)
+    if clip
+      clip.id
     end
   end
 end

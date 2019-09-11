@@ -1,7 +1,19 @@
-h1 = t(:".title")
-p Find me in app/views/events/show.html.slim
-ul.list-group
-  li.list-group-item = @event.title
-  li.list-group-item = @event.gig_date
-  li.list-group-item = link_to "編集", edit_event_path(@event), class: "btn btn-info"
-  li.list-group-item = link_to "削除", @event, method: :delete, data: { confirm: "削除しますか？" }, class: "btn btn-info"
+- add_breadcrumb "イベント一覧", events_path
+- add_breadcrumb @event.title, @event
+
+.row
+  .col.s12.m3.push-m9
+    =render 'sidenav_user'
+  .col.s12.m9.pull-m3
+    h2.content-heading =@event.title
+    .row
+      .col.s12
+        .event.card.hoverable
+          .card-content
+            .row.valign-wrapper.row
+              .name.col.s8
+                = link_to @event.title, @event 
+                br/
+                = link_to "編集", edit_event_path(@event), class: "btn btn-info"
+                = link_to "削除", @event, method: :delete, data: { confirm: "削除しますか？" }, class: "btn btn-info"
+              

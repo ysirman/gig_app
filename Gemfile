@@ -45,6 +45,7 @@ gem 'materialize-sass'
 gem 'material_icons'
 gem 'rails-i18n'
 gem 'devise'
+gem 'kaminari'
 # vue用の設定
 gem 'foreman'
 

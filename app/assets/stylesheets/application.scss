@@ -68,6 +68,23 @@ nav {
   }
 }
 
+a:hover {
+  opacity: 0.7;
+  transition: background-color .2s ease-out;
+}
+
+.pagination {
+  .active {
+    padding: 0px 10px;
+    line-height: 30px;
+    border-radius: 3px;
+    color: white;
+  }
+  .disabled {
+    color: #BBB;
+  }
+}
+
 .parallax-container {
   height: 360px;
 }
@@ -114,14 +131,21 @@ nav {
         line-height: 24px;
         font-size: 12px;
       }
-      .participate-btn {
+      .participate-btn,
+      .clip-btn {
         padding: 0px;
         .btn {
           width: 100%;
-          margin-right: 10px;
+        }
+      }
+      .participate-btn {
+        margin-bottom: 8px;
+        .btn {
+          background-color: #1E88E5;
         }
         .is-active {
-          background-color: blue;
+          color: #333;
+          background-color: #DDD;
         }
         .is-active:before {
           content: "参加中";
@@ -130,12 +154,33 @@ nav {
           background-color: red;
         }
         .is-active:hover:before{
-          content: "キャンセル";
-          letter-spacing: 0px;
-          font-size: 11px;
+          color: #FFF;
+          content: "参加キャンセル";
         }
         .is-inactive:before {
           content: "参加";
+        }
+      }
+      .clip-btn {
+        .btn {
+          background-color: #FFFF00;
+          color: #111;
+        }
+        .is-active {
+          background-color: #DDD;
+        }
+        .is-active:before {
+          content: "クリップ中";
+        }
+        .is-active:hover {
+          color: #FFF;
+          background-color: red;
+        }
+        .is-active:hover:before{
+          content: "クリップ削除";
+        }
+        .is-inactive:before {
+          content: "クリップ";
         }
       }
     }

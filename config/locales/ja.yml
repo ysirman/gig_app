@@ -16,7 +16,7 @@ ja:
     index:
       title: "イベント"
     new:
-      title: "イベント作成"
+      title: "イベント新規作成"
     edit:
       title: "イベント編集"
   users:
@@ -26,6 +26,10 @@ ja:
       title: "プロフィール"
     edit:
       title: "プロフィール編集"
+    show_participation:
+      title: "参加したイベント"
+    show_clip:
+      title: "クリップしたイベント"
   activerecord:
     models:
       user: ユーザー
@@ -49,32 +53,9 @@ ja:
         location: 開催場所
         target_price: 予定参加費
         description: イベント詳細
-    enums:
-      user:
-        job:
-          student: 学生
-          office_worker: 会社員
-          part_time_worker: フリーター
-          vacation: 休職中
-          unemployed: 働いていない
-        os:
-          windows: Windows
-          mac: Mac
-          linux: Linux
-        study_place:
-          local: フィヨルドブートキャンプオフィス
-          remote: 自宅
-        experience:
-          inexperienced: 未経験
-          html_css: HTML/CSS経験あり
-          other_ruby: Ruby以外の言語経験あり
-          ruby: Ruby経験あり
-          rails: Rails経験あり
-      learning:
-        status:
-          started: 開始
-          complete: 完了
-          not_complete: 未完
+  views:
+    pagination:
+      truncate: …
   helpers:
     submit:
       create: 登録する
