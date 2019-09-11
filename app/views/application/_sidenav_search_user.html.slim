@@ -1,0 +1,21 @@
+#sidebar.card.grey.lighten-4
+  .box.searchCondition
+    = form_with url: search_users_path, method: :get, local: true do |f|
+      .input-field
+        = f.text_field :keyword, id:"keyword", class:"validate", placeholder:"ポップス 天神 椎名林檎", value: (params[:keyword] if params[:keyword])
+        label for="keyword" 検索キーワード
+      .input-field
+        = f.text_field :genre, id:"genre", class:"validate", placeholder:"POPS　ROCK　JAZZ", value: (params[:genre] if params[:genre])
+        label for="genre" ジャンル
+      .input-field
+        = f.select :region, prefectures, selected: (params[:region] if params[:region])
+        label エリア
+      .searchCondition-button.center-align
+        = f.submit "絞り込む", class:"btn"
+javascript:
+  $(document).ready(function() {
+    $('input#input_text, textarea#textarea2').characterCounter();
+  });
+  $(document).ready(function(){
+    $('select').formSelect();
+  });

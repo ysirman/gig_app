@@ -31,4 +31,13 @@ class UsersController < ApplicationController
     @events = @user.clip_events.page(params[:page])
     render :show_clip
   end
+
+  def search
+    if params[:keyword].present? || params[:genre].present? || params[:region].present?
+      @users = User.search(params).page(params[:page])
+      render :index
+    else
+      redirect_to users_url
+    end
+  end
 end

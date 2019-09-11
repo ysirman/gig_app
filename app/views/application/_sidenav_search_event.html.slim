@@ -5,7 +5,7 @@
         = f.text_field :keyword, id:"keyword", class:"validate", placeholder:"ポップス 天神 椎名林檎", value: (params[:keyword] if params[:keyword])
         label for="keyword" 検索キーワード
       .input-field
-        = f.select :region, {都道府県を選択: "", 福岡: "福岡",}, selected: (params[:region] if params[:region])
+        = f.select :region, prefectures, selected: (params[:region] if params[:region])
         label エリア
       .input-field
         = f.text_field :gig_date, class:"datepicker", placeholder:"From", value: (params[:gig_date] if params[:gig_date])

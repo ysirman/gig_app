@@ -48,4 +48,35 @@ class User < ApplicationRecord
       clip.id
     end
   end
+
+  def self.search(params)
+    if params[:keyword].present?
+      keywords = params[:keyword].split(/[[:blank:]]/)
+      queries = keywords.map do |keyword|
+        User.where('login_name LIKE ?', "%#{keyword}%")
+        .or(User.where('name LIKE ?', "%#{keyword}%"))
+        .or(User.where('profile LIKE ?', "%#{keyword}%"))
+        .or(User.where('genre LIKE ?', "%#{keyword}%"))
+      end
+      results = queries.inject do |scope, query| 
+        scope.or(query)
+      end
+      result = results
+    end
+    if params[:genre].present?
+      genres = params[:genre].split(/[[:blank:]]/)
+      queries = genres.map do |genre|
+        User.where('genre LIKE ?', "%#{genre}%")
+      end
+      results = queries.inject do |scope, query| 
+        scope.or(query)
+      end
+      result = result ? result.merge(results) : results
+    end
+    if params[:region].present?
+      query = User.where(region: "#{params[:region]}")
+      result = result ? result.merge(query) : query
+    end
+    result
+  end
 end
