@@ -1,0 +1,15 @@
+#sidebar.card.grey.lighten-4
+  ul.mypage
+    li
+      i.material-icons account_circle
+      = link_to "プロフィール", current_user
+    li
+      i.material-icons event
+      = link_to "参加イベント", participations_user_path(current_user.id)
+    li
+      i.material-icons attach_file
+      = link_to "クリップ", clips_user_path(current_user.id)
+    li
+      i.material-icons edit
+      = link_to "アカウント編集", edit_user_registration_path
+        

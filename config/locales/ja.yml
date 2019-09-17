@@ -27,9 +27,9 @@ ja:
     edit:
       title: "プロフィール編集"
     show_participation:
-      title: "参加したイベント"
+      title: "%{name}さんの参加イベント"
     show_clip:
-      title: "クリップしたイベント"
+      title: "%{name}さんのクリップイベント"
   activerecord:
     models:
       user: ユーザー

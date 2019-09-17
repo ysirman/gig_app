@@ -11,7 +11,7 @@
     .row
       - @users.each do |user|
         .col.s12.m6
-          .users.card.hoverable
+          .userList.card.hoverable
             .card-content
               .info.row.valign-wrapper
                 .col.s8
@@ -38,5 +38,5 @@
                   ul.genre
                     li POPS
                     li ROCK
-                  = user.profile
+                  .profile = user.profile
     = paginate @users

@@ -73,7 +73,7 @@ javascript:
     .row
       - @users.each do |user|
         .col.s12.m6
-          .users.card.hoverable
+          .userList.card.hoverable
             .card-content
               .info.row.valign-wrapper
                 .col.s8
@@ -100,6 +100,6 @@ javascript:
                   ul.genre
                     li POPS
                     li ROCK
-                  = user.profile
+                  .profile = user.profile
     .load-more.center-align
       = link_to "バンドをもっと見る", events_path
