@@ -19,7 +19,9 @@
               .day= l(event.gig_date, format: :day)
               .time= l(event.gig_date, format: :time)
             .info.col.s12.m8
-              .title= link_to event.title, event
+              .title
+                i.material-icons event
+                = link_to event.title, event
               .venue
                 i.material-icons.gray location_on
                 = event.region

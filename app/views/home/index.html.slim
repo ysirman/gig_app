@@ -65,10 +65,41 @@ javascript:
               - else
                 =link_to "参加", new_user_registration_path, class:'btn waves-effect waves-light col s12'
                 =link_to "クリップ", new_user_registration_path, class:'btn waves-effect waves-light col s12'
-    .load-more.center-align.s12
+    .load-more.center-align
       = link_to "イベントをもっと見る", events_path
 .row
   .col.s12.m8.offset-m2
     h2.content-heading 新着バンド
-    .load-more.center-align.s12.mb-5
+    .row
+      - @users.each do |user|
+        .col.s12.m6
+          .users.card.hoverable
+            .card-content
+              .info.row.valign-wrapper
+                .col.s8
+                  .names
+                    i.material-icons account_circle
+                    span.name = link_to user.name, user
+                    span.login_name #{"@" + user.login_name}
+                  .follow
+                    a href="#{following_user_path(user)}" 
+                      = user.following.count
+                      | フォロー中
+                    a href="#{followers_user_path(user)}" 
+                      = user.followers.count
+                      | フォロワー
+                .col.s4
+                  - if user_signed_in?
+                    - unless current_user?(user)
+                        - follow_relation_id = current_user.following?(user) ? current_user.active_follow_relations.find_by(followed_id: user.id).id : nil
+                        .js-follow-relation(data-follow-relation-id="#{follow_relation_id}" data-followed-id="#{user.id}")
+                  - else
+                    =link_to "フォロー", new_user_registration_path, class:'btn waves-effect waves-light'
+              .info.row
+                .col.s12 
+                  ul.genre
+                    li POPS
+                    li ROCK
+                  = user.profile
+    .load-more.center-align
       = link_to "バンドをもっと見る", events_path

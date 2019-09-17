@@ -11,15 +11,21 @@
     .row
       - @users.each do |user|
         .col.s12.m6
-          .user.card.hoverable
+          .users.card.hoverable
             .card-content
-              .row.valign-wrapper.row
-                .name.col.s8
-                  = link_to user.name, user 
-                  br/
-                  | @ #{user.login_name}
-                  br/
-                  = user.profile
+              .info.row.valign-wrapper
+                .col.s8
+                  .names
+                    i.material-icons account_circle
+                    span.name = link_to user.name, user
+                    span.login_name #{"@" + user.login_name}
+                  .follow
+                    a href="#{following_user_path(user)}" 
+                      = user.following.count
+                      | フォロー中
+                    a href="#{followers_user_path(user)}" 
+                      = user.followers.count
+                      | フォロワー
                 .col.s4
                   - if user_signed_in?
                     - unless current_user?(user)
@@ -27,24 +33,10 @@
                         .js-follow-relation(data-follow-relation-id="#{follow_relation_id}" data-followed-id="#{user.id}")
                   - else
                     =link_to "フォロー", new_user_registration_path, class:'btn waves-effect waves-light'
-              .row
-                .col.s12
-                  = t(:"activerecord.attributes.user.men_num")
-                  | ：
-                  = t(:"activerecord.attributes.user.women_num")
-                  | ＝#{user.men_num}
-                  | ：#{user.women_num}
-                  br/
-                  = t(:"activerecord.attributes.user.created_at")
-                  | : #{l(user.created_at, format: :date_only)}
-                  .stats
-                    a href="#{following_user_path(user)}" 
-                      strong#following.stat
-                      | フォロー中：
-                      = user.following.count
-                    | ／
-                    a href="#{followers_user_path(user)}" 
-                      strong#followers.stat
-                      | フォロワー
-                      = user.followers.count
+              .info.row
+                .col.s12 
+                  ul.genre
+                    li POPS
+                    li ROCK
+                  = user.profile
     = paginate @users

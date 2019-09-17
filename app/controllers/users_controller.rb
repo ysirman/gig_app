@@ -1,33 +1,30 @@
 class UsersController < ApplicationController
+  before_action :set_user, only: [:show, :following, :followers, :participations, :clips]
 
   def index
     @users = User.order(created_at: :desc).page(params[:page])
   end
 
   def show
-    @user = User.find(params[:id])
+    @participations = Participation.where(user_id: @user.following.ids).order(created_at: :desc).limit(20)
   end
 
   def following
-    @user  = User.find(params[:id])
     @users = @user.following
     render :show_follow
   end
 
   def followers
-    @user  = User.find(params[:id])
     @users = @user.followers
     render :show_follow
   end
 
   def participations
-    @user  = User.find(params[:id])
     @events = @user.events.page(params[:page])
     render :show_participation
   end
 
   def clips
-    @user  = User.find(params[:id])
     @events = @user.clip_events.page(params[:page])
     render :show_clip
   end
@@ -40,4 +37,9 @@ class UsersController < ApplicationController
       redirect_to users_url
     end
   end
+
+  private
+    def set_user
+      @user = User.find(params[:id])
+    end
 end

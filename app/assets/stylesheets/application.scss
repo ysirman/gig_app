@@ -36,6 +36,11 @@ $link-color: color("light-blue", "darken-1") !default;
 .btn {
   border-radius: 8px;
 }
+nav a:hover,
+a.btn:hover,
+.load-more a:hover {
+  text-decoration: none;
+}
 
 .content-heading {
   font-size: 22px;
@@ -71,6 +76,7 @@ nav {
 a:hover {
   opacity: 0.7;
   transition: background-color .2s ease-out;
+  text-decoration: underline;
 }
 
 .pagination {
@@ -217,14 +223,30 @@ a:hover {
   }
 }
 
+.genre {
+  margin: 4px 0px;
+  li {
+    display: inline-block;
+    color: grey;
+    line-height: 1em;
+    background-color: #EEE;
+    border-radius: 12px;
+    padding: 6px 8px;
+    margin-right: 4px;
+    font-size: 11px;
+  }
+}
+
 .follow-relation {
   .is-active {
-    background-color: blue;
+    color: #333;
+    background-color: #DDD;
   }
   .is-active:before {
     content: "フォロー中";
   }
   .is-active:hover {
+    color: #FFF;
     background-color: red;
   }
   .is-active:hover:before{
@@ -232,5 +254,87 @@ a:hover {
   }
   .is-inactive:before {
     content: "フォロー";
+  }
+}
+
+.mypage {
+  i {
+    vertical-align: bottom;
+    color: #009688;
+  }
+  li {
+    margin: 16px 0px 0px 20px;
+    line-height: 20px;
+    a {
+      display: inline-block;
+      padding: 0px 0px 2px 6px;
+    }
+  }
+}
+
+.user,
+.users {
+  .names {
+    margin-bottom: 6px;
+    line-height: 20px;
+    i, 
+    .name, 
+    .login_name {
+      vertical-align: bottom;
+    }
+    i {
+      padding-top: 4px;
+      font-size: 29px;
+      color: #333;
+    }
+    .name {
+      display: inline-block;
+      margin: 0px 8px 0px 3px;
+      font-weight: 700;
+      font-size: 20px;
+    }
+    .login_name {
+      display: inline-block;
+      padding-bottom: 1px;
+      color : #666;
+    }
+  }
+  .follow {
+    margin-left: 4px;
+    a {
+      display: inline-block;
+      margin-right: 16px;
+    }
+  }
+}
+
+.user {
+  padding: 24px 42px;
+  .info {
+    margin-bottom: 0px;
+    padding: 18px 0px;
+    border-bottom: 1px solid #DDD;
+  }
+  .label {
+    font-weight: 700;
+  }
+}
+.users {
+  .info:first-child {
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #DDD;
+  }
+  .names {
+    .name {
+      font-size: 16px;
+    }
+  }
+}
+
+.following_user_activity {
+  .date {
+    color: #666;
+    font-size: 12px;
   }
 }
