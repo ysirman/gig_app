@@ -56,7 +56,7 @@ javascript:
               li POPS
               li ROCK
           .participation.center-align.col.s12.m2
-            .current= Participation.where(event_id: event.id).count
+            .current= event.participations.count
             .target 定員 #{event.target_join_num}
             .btn-group.row
               - if user_signed_in?

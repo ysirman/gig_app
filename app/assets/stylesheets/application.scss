@@ -28,6 +28,9 @@ $link-color: color("light-blue", "darken-1") !default;
 @import 'materialize';
 @import '_spacing';
 
+/*******************************************
+ common
+*******************************************/
 .container {
   width: 1220px;
   padding-top: 18px;
@@ -42,16 +45,28 @@ a.btn:hover,
   text-decoration: none;
 }
 
+
+a:hover {
+  opacity: 0.7;
+  transition: background-color .2s ease-out;
+  text-decoration: underline;
+}
+
+.parallax-container {
+  height: 360px;
+}
+
+/*******************************************
+ heading
+*******************************************/
 .content-heading {
   font-size: 22px;
   font-weight: 700;
 }
 
-#sidebar {
-  padding: 10px 20px 20px 20px;
-  border-top: 5px solid #212121;
-}
-
+/*******************************************
+ nav
+*******************************************/
 nav {
   .nav-wrapper {
     padding: 0px 12px;
@@ -73,10 +88,88 @@ nav {
   }
 }
 
-a:hover {
-  opacity: 0.7;
-  transition: background-color .2s ease-out;
-  text-decoration: underline;
+/*******************************************
+ sidebar
+*******************************************/
+#sidebar {
+  padding: 10px 20px 20px 20px;
+  border-top: 5px solid #212121;
+  .mypage_nav,
+  .event_nav {
+    i {
+      vertical-align: bottom;
+      color: #009688;
+    }
+    li {
+      margin: 16px 0px 0px 20px;
+      line-height: 20px;
+      a {
+        display: inline-block;
+        padding: 0px 0px 2px 6px;
+      }
+    }
+  }
+  .event_nav {
+    border-top: 1px solid #ddd;
+    li {
+      margin-left: -10px;
+    }
+  }
+  .event_info {
+    .date {
+      margin: 16px;
+      font-size: 18px;
+      font-weight: 700;
+    }
+  }
+  .location {
+    padding: 10px 0px;
+    border: 1px solid #ddd;
+    border-right: none;
+    border-left: none;
+    text-align: center;
+    font-size: 14px;
+    i {
+      vertical-align: bottom;
+      color: #009688;
+      font-size: 18px;
+    }
+  }
+  .btn-group {
+    margin: 16px 0px;
+  }
+}
+
+/*******************************************
+ icon
+*******************************************/
+.genre {
+  li {
+    display: inline-block;
+    color: grey;
+    line-height: 1em;
+    background-color: #EEE;
+    border-radius: 12px;
+    padding: 6px 8px;
+    margin-right: 4px;
+    font-size: 11px;
+  }
+}
+
+/*******************************************
+ link
+*******************************************/
+.load-more {
+  line-height: 2.4;
+  background-color: #DDD;
+  a {
+    display: inline-block;
+    width: 100%;
+    color: #666;
+  }
+}
+.load-more:hover {
+  background-color: #CCC;
 }
 
 .pagination {
@@ -91,152 +184,9 @@ a:hover {
   }
 }
 
-.parallax-container {
-  height: 360px;
-}
-
-.load-more {
-  line-height: 2.4;
-  background-color: #DDD;
-  a {
-    display: inline-block;
-    width: 100%;
-    color: #666;
-  }
-}
-.load-more:hover {
-  background-color: #CCC;
-}
-
-.eventList {
-  .card-content {
-    padding: 12px 24px;
-  }
-  .date {
-    margin-right: 12px;
-    padding: 24px 0px;
-    background-color: #EEE;
-  }
-  .year,
-  .time {
-    font-size: 14px;
-    color: #333;
-  }
-  .day,
-  .participation .current {
-    line-height: 2;
-    font-size: 22px;
-    font-weight: 700;
-  }
-  .participation {
-    .btn-group {
-      margin-top: 16px;
-      .btn {
-        height: 24px;
-        padding: 0;
-        line-height: 24px;
-        font-size: 12px;
-      }
-      .participate-btn,
-      .clip-btn {
-        padding: 0px;
-        .btn {
-          width: 100%;
-        }
-      }
-      .participate-btn {
-        margin-bottom: 8px;
-        .btn {
-          background-color: #1E88E5;
-        }
-        .is-active {
-          color: #333;
-          background-color: #DDD;
-        }
-        .is-active:before {
-          content: "参加中";
-        }
-        .is-active:hover {
-          background-color: red;
-        }
-        .is-active:hover:before{
-          color: #FFF;
-          content: "参加キャンセル";
-        }
-        .is-inactive:before {
-          content: "参加";
-        }
-      }
-      .clip-btn {
-        .btn {
-          background-color: #FFFF00;
-          color: #111;
-        }
-        .is-active {
-          background-color: #DDD;
-        }
-        .is-active:before {
-          content: "クリップ中";
-        }
-        .is-active:hover {
-          color: #FFF;
-          background-color: red;
-        }
-        .is-active:hover:before{
-          content: "クリップ削除";
-        }
-        .is-inactive:before {
-          content: "クリップ";
-        }
-      }
-    }
-  }
-
-  .info {
-    padding-left: 12px;
-    margin-right: 12px;
-    border-left: 1px solid #DDD;
-    border-right: 1px solid #DDD;
-  }
-  .venue {
-    color: #888;
-    i {
-      font-size: 13px;
-    }
-  }
-  .title {
-    margin-bottom: 10px;
-    font-size: 1.4rem;
-    font-weight: 700;
-  }
-  .genre {
-    li {
-      display: inline-block;
-      color: grey;
-      line-height: 1em;
-      background-color: #EEE;
-      border-radius: 12px;
-      padding: 6px 8px;
-      margin-right: 4px;
-      font-size: 11px;
-    }
-  }
-}
-
-.genre {
-  margin: 4px 0px;
-  li {
-    display: inline-block;
-    color: grey;
-    line-height: 1em;
-    background-color: #EEE;
-    border-radius: 12px;
-    padding: 6px 8px;
-    margin-right: 4px;
-    font-size: 11px;
-  }
-}
-
+/*******************************************
+ btn
+*******************************************/
 .follow-relation {
   .is-active {
     color: #333;
@@ -257,21 +207,64 @@ a:hover {
   }
 }
 
-.mypage {
-  i {
-    vertical-align: bottom;
-    color: #009688;
-  }
-  li {
-    margin: 16px 0px 0px 20px;
-    line-height: 20px;
-    a {
-      display: inline-block;
-      padding: 0px 0px 2px 6px;
-    }
+.participate-btn,
+.clip-btn {
+  padding: 0px;
+  .btn {
+    width: 100%;
   }
 }
 
+.participate-btn {
+  margin-bottom: 8px;
+  .btn {
+    background-color: #1E88E5;
+  }
+  .is-active {
+    color: #333;
+    background-color: #DDD;
+  }
+  .is-active:before {
+    content: "参加中";
+  }
+  .is-active:hover {
+    background-color: red;
+  }
+  .is-active:hover:before{
+    color: #FFF;
+    content: "参加キャンセル";
+  }
+  .is-inactive:before {
+    content: "参加";
+  }
+}
+
+.clip-btn {
+  .btn {
+    color: #111;
+    background-color: #FFFF00;
+  }
+  .is-active {
+    background-color: #DDD;
+  }
+  .is-active:before {
+    content: "クリップ中";
+  }
+  .is-active:hover {
+    color: #FFF;
+    background-color: red;
+  }
+  .is-active:hover:before{
+    content: "クリップ削除";
+  }
+  .is-inactive:before {
+    content: "クリップ";
+  }
+}
+
+/*******************************************
+ user
+*******************************************/
 .user,
 .userList {
   .names {
@@ -332,9 +325,121 @@ a:hover {
   }
 }
 
+.user {
+  .genre {
+    margin: 4px 0px;
+  }
+}
+
 .following_user_activity {
   .date {
     color: #666;
     font-size: 12px;
+  }
+}
+
+/*******************************************
+ event
+*******************************************/
+.eventList {
+  .card-content {
+    padding: 12px 24px;
+  }
+  .date {
+    margin-right: 12px;
+    padding: 24px 0px;
+    background-color: #EEE;
+  }
+  .year,
+  .time {
+    font-size: 14px;
+    color: #333;
+  }
+  .day,
+  .participation .current {
+    line-height: 2;
+    font-size: 22px;
+    font-weight: 700;
+  }
+  .participation {
+    .btn-group {
+      margin-top: 16px;
+      .btn {
+        height: 24px;
+        padding: 0;
+        line-height: 24px;
+        font-size: 12px;
+      }
+    }
+  }
+
+  .info {
+    padding-left: 12px;
+    margin-right: 12px;
+    border-left: 1px solid #DDD;
+    border-right: 1px solid #DDD;
+  }
+  .venue {
+    color: #888;
+    i {
+      font-size: 13px;
+    }
+  }
+  .title {
+    margin-bottom: 10px;
+    font-size: 1.4rem;
+    font-weight: 700;
+    i {
+      margin-bottom: 4px;
+      vertical-align: bottom;
+      color: #009688;
+    }
+  }
+  .genre {
+    li {
+      display: inline-block;
+      color: grey;
+      line-height: 1em;
+      background-color: #EEE;
+      border-radius: 12px;
+      padding: 6px 8px;
+      margin-right: 4px;
+      font-size: 11px;
+    }
+  }
+}
+
+.event {
+  padding: 20px; 
+  h3,
+  h4 {
+    font-size: 18px;
+  }
+  h3 {
+    margin: 0px 0px 16px 0px;
+    padding: 10px 10px;
+    border-radius: 4px;
+    color: #FFF;
+    background-color: #1a237e;
+  }
+  h4 {
+    margin-bottom:20px;
+    padding: 12px 4px;
+    border-bottom: 3px solid #1a237e;
+  }
+  table {
+    width: 98%;
+    margin: 1%;
+  }
+  th {
+    background-color: #eee;
+  }
+  td,
+  th {
+    text-align: center;
+    border: 1px solid #ddd;
+  }
+  p {
+    line-height: 1.8;
   }
 }

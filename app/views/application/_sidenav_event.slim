@@ -1,15 +1,25 @@
 #sidebar.card.grey.lighten-4
-  ul.mypage
-    li
-      i.material-icons account_circle
-      = link_to "プロフィール", current_user
-    li
-      i.material-icons event
-      = link_to "参加イベント", participations_user_path(current_user.id)
-    li
-      i.material-icons attach_file
-      = link_to "クリップ", clips_user_path(current_user.id)
+  .event_info
+    .date.center-align
+      = l(@event.gig_date, format: :date_only)
+      br
+      | @
+      = @event.region
+    .location
+      i.material-icons location_on
+      = @event.location
+  .btn-group.row
+    - if user_signed_in?
+      .js-participation(data-participation-id="#{current_user.participating?(@event)}" data-event-id="#{@event.id}")
+      .js-clip(data-clip-id="#{current_user.clipping?(@event)}" data-event-id="#{@event.id}")
+    - else
+      =link_to "参加", new_user_registration_path, class:'btn waves-effect waves-light col s12'
+      =link_to "クリップ", new_user_registration_path, class:'btn waves-effect waves-light col s12'
+  ul.event_nav.center-align
     li
       i.material-icons edit
-      = link_to "アカウント編集", edit_user_registration_path
+      = link_to "イベント編集", edit_event_path(@event)
+    li
+      i.material-icons delete
+      = link_to "イベント削除", @event, method: :delete, data: { confirm: "削除しますか？" }
         
