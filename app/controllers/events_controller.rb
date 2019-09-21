@@ -1,5 +1,7 @@
 class EventsController < ApplicationController
+  before_action :authenticate_user!, only: [:edit, :update, :destroy]
   before_action :set_event, only: [:show, :edit, :update, :destroy]
+  before_action :correct_user, only: [:edit, :update, :destroy]
 
   def index
     @events = Event.all.order(gig_date: :desc).page(params[:page])
@@ -17,8 +19,7 @@ class EventsController < ApplicationController
 
   def create
     @event = Event.new(event_params)
-    # @event.user_id = current_user.user_id
-    @event.user_id = "hogege"
+    @event.user_id = current_user.id
     if @event.save
       redirect_to @event, notice: t(:"flash.success.create")
     else
@@ -57,11 +58,15 @@ class EventsController < ApplicationController
       params.require(:event).permit(
         :title, 
         :gig_date, 
-        :user_id, 
         :target_join_num, 
         :region, 
         :location, 
         :target_price, 
         :description)
+    end
+
+    def correct_user
+      @event = current_user.events.find_by(id: params[:id])
+      redirect_to root_url if @event.nil?
     end
 end

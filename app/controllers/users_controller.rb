@@ -10,17 +10,17 @@ class UsersController < ApplicationController
   end
 
   def following
-    @users = @user.following
+    @users = @user.following.page(params[:page])
     render :show_follow
   end
 
   def followers
-    @users = @user.followers
+    @users = @user.followers.page(params[:page])
     render :show_follow
   end
 
   def participations
-    @events = @user.events.page(params[:page])
+    @events = @user.participate_events.page(params[:page])
     render :show_participation
   end
 

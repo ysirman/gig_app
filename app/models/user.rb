@@ -10,11 +10,14 @@ class User < ApplicationRecord
   has_many :passive_follow_relations, class_name:  "FollowRelation", foreign_key: "followed_id", dependent: :destroy
   has_many :followers, through: :passive_follow_relations, source: :follower
 
+  # イベントの設定
+  has_many :events
+
   # イベント参加の設定
   has_many :participations, dependent: :destroy
-  has_many :events, through: :participations
+  has_many :participate_events, through: :participations, source: :event
   
-  # クリップ参加の設定
+  # クリップの設定
   has_many :clips, dependent: :destroy
   has_many :clip_events, through: :clips, source: :event
 

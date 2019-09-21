@@ -10,11 +10,18 @@
       = @event.location
   .btn-group.row
     - if user_signed_in?
-      .js-participation(data-participation-id="#{current_user.participating?(@event)}" data-event-id="#{@event.id}")
-      .js-clip(data-clip-id="#{current_user.clipping?(@event)}" data-event-id="#{@event.id}")
+      - if organizer?(@event)
+        .organizer.center-align
+          i.material-icons stars
+          | 主催イベント
+      - else
+        .js-participation(data-participation-id="#{current_user.participating?(@event)}" data-event-id="#{@event.id}")
+        .js-clip(data-clip-id="#{current_user.clipping?(@event)}" data-event-id="#{@event.id}")
     - else
-      =link_to "参加", new_user_registration_path, class:'btn waves-effect waves-light col s12'
-      =link_to "クリップ", new_user_registration_path, class:'btn waves-effect waves-light col s12'
+      .participate-btn.col.s12
+        =link_to "参加", new_user_registration_path, class:'btn waves-effect waves-light col s12'
+      .clip-btn.col.s12
+        =link_to "クリップ", new_user_registration_path, class:'btn waves-effect waves-light col s12'
   ul.event_nav.center-align
     li
       i.material-icons edit

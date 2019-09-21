@@ -1,4 +1,7 @@
 class Event < ApplicationRecord
+  # イベントの設定
+  belongs_to :user
+
   # イベント参加の設定
   has_many :participations, dependent: :destroy
   has_many :users, through: :participations
@@ -7,6 +10,7 @@ class Event < ApplicationRecord
   has_many :clips, dependent: :destroy
   has_many :clip_users, through: :clips, source: :user
 
+  # kaminariの設定
   paginates_per 10
 
   def self.search(params)

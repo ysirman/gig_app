@@ -1,0 +1,34 @@
+- @events.each do |event|
+  .card.hoverable
+    .card-content.valign-wrapper.row
+      .date.center-align.col.s12.m2
+        .year= l(event.gig_date, format: :year)
+        .day= l(event.gig_date, format: :day)
+        .time= l(event.gig_date, format: :time)
+      .info.col.s12.m8
+        .title= link_to event.title, event
+        .venue
+          i.material-icons.gray location_on
+          = event.region
+          = event.location
+        ul.genre
+          li POPS
+          li ROCK
+      .participation.center-align.col.s12.m2
+        .current= event.participations.count
+        .target 定員 #{event.target_join_num}
+        .btn-group.row
+          - if user_signed_in?
+            - if organizer?(event)
+              .organizer.center-align
+                i.material-icons stars
+                | 主催イベント
+            - else
+              .js-participation(data-participation-id="#{current_user.participating?(event)}" data-event-id="#{event.id}")
+              .js-clip(data-clip-id="#{current_user.clipping?(event)}" data-event-id="#{event.id}")
+          - else
+            .participate-btn.col.s12
+              =link_to "参加", new_user_registration_path, class:'btn waves-effect waves-light col s12'
+            .clip-btn.col.s12
+              =link_to "クリップ", new_user_registration_path, class:'btn waves-effect waves-light col s12'
+              

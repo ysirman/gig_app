@@ -40,18 +40,20 @@ ja:
         name: バンド名
         region: 活動地域
         profile: バンド紹介
+        genre: ジャンル
         men_num: 男
         women_num: 女
         created_at: 登録日
         updated_at: 更新日
       event:
         title: タイトル
+        genre: ジャンル
         gig_date: 開催日
-        user_id: ユーザーID
-        target_join_num: 予定参加数
-        region: 地域
-        location: 開催場所
-        target_price: 予定参加費
+        user_id: 主催ユーザーID
+        target_join_num: 募集バンド数
+        region: 開催地域
+        location: 会場
+        target_price: 参加費
         description: イベント詳細
   views:
     pagination:

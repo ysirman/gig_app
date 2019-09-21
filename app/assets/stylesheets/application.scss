@@ -63,83 +63,6 @@ a:hover {
   font-size: 22px;
   font-weight: 700;
 }
-
-/*******************************************
- nav
-*******************************************/
-nav {
-  .nav-wrapper {
-    padding: 0px 12px;
-  }
-  .brand-logo,
-  ul a {
-    color: #1a237e;
-  }
-}
-.breadcrumbs {
-  height: 32px;
-  line-height: 32px;
-  .breadcrumb {
-    font-size: 12px;
-  }
-  .breadcrumb:before {
-    font-size: 20px;
-    margin: 2px 8px 0 8px;
-  }
-}
-
-/*******************************************
- sidebar
-*******************************************/
-#sidebar {
-  padding: 10px 20px 20px 20px;
-  border-top: 5px solid #212121;
-  .mypage_nav,
-  .event_nav {
-    i {
-      vertical-align: bottom;
-      color: #009688;
-    }
-    li {
-      margin: 16px 0px 0px 20px;
-      line-height: 20px;
-      a {
-        display: inline-block;
-        padding: 0px 0px 2px 6px;
-      }
-    }
-  }
-  .event_nav {
-    border-top: 1px solid #ddd;
-    li {
-      margin-left: -10px;
-    }
-  }
-  .event_info {
-    .date {
-      margin: 16px;
-      font-size: 18px;
-      font-weight: 700;
-    }
-  }
-  .location {
-    padding: 10px 0px;
-    border: 1px solid #ddd;
-    border-right: none;
-    border-left: none;
-    text-align: center;
-    font-size: 14px;
-    i {
-      vertical-align: bottom;
-      color: #009688;
-      font-size: 18px;
-    }
-  }
-  .btn-group {
-    margin: 16px 0px;
-  }
-}
-
 /*******************************************
  icon
 *******************************************/
@@ -153,6 +76,20 @@ nav {
     padding: 6px 8px;
     margin-right: 4px;
     font-size: 11px;
+  }
+}
+
+.organizer {
+  padding: 3px;
+  font-size: 12px;
+  font-weight: 700;
+  color: #b71c1c;
+  border: 2px solid #b71c1c;
+  border-radius: 18px;
+  i {
+    vertical-align: bottom;
+    margin-right: 2px;
+    font-size: 20px;
   }
 }
 
@@ -205,6 +142,14 @@ nav {
   .is-inactive:before {
     content: "フォロー";
   }
+  a {
+    display: inline-block;
+    width: 100%;
+  }
+}
+.home .follow-relation a {
+  font-size: 12px;
+  padding: 0px 10px;
 }
 
 .participate-btn,
@@ -263,6 +208,87 @@ nav {
 }
 
 /*******************************************
+ nav
+*******************************************/
+nav {
+  .nav-wrapper {
+    padding: 0px 12px;
+  }
+  .brand-logo,
+  ul a {
+    color: #1a237e;
+  }
+}
+.breadcrumbs {
+  height: 32px;
+  line-height: 32px;
+  .breadcrumb {
+    font-size: 12px;
+  }
+  .breadcrumb:before {
+    font-size: 20px;
+    margin: 2px 8px 0 8px;
+  }
+}
+
+.notice,
+.alert {
+  padding-bottom: 20px;
+}
+
+/*******************************************
+ sidebar
+*******************************************/
+#sidebar {
+  padding: 10px 20px 20px 20px;
+  border-top: 5px solid #212121;
+  .mypage_nav,
+  .event_nav {
+    i {
+      vertical-align: bottom;
+      color: #009688;
+    }
+    li {
+      margin: 16px 0px 0px 20px;
+      line-height: 20px;
+      a {
+        display: inline-block;
+        padding: 0px 0px 2px 6px;
+      }
+    }
+  }
+  .event_nav {
+    border-top: 1px solid #ddd;
+    li {
+      margin-left: -10px;
+    }
+  }
+  .event_info {
+    .date {
+      margin: 16px;
+      font-size: 18px;
+      font-weight: 700;
+    }
+  }
+  .location {
+    padding: 10px 0px;
+    border: 1px solid #ddd;
+    border-right: none;
+    border-left: none;
+    text-align: center;
+    font-size: 14px;
+    i {
+      vertical-align: bottom;
+      color: #009688;
+      font-size: 18px;
+    }
+  }
+  .btn-group {
+    margin: 16px 0px;
+  }
+}
+
+/*******************************************
  user
 *******************************************/
 .user,
@@ -311,8 +337,12 @@ nav {
   .label {
     font-weight: 700;
   }
+  .genre {
+    margin: 4px 0px;
+  }
 }
 .userList {
+  margin-bottom: 5px;
   .info:first-child {
     margin-bottom: 10px;
     padding-bottom: 10px;
@@ -322,12 +352,6 @@ nav {
     .name {
       font-size: 16px;
     }
-  }
-}
-
-.user {
-  .genre {
-    margin: 4px 0px;
   }
 }
 
@@ -393,18 +417,6 @@ nav {
       margin-bottom: 4px;
       vertical-align: bottom;
       color: #009688;
-    }
-  }
-  .genre {
-    li {
-      display: inline-block;
-      color: grey;
-      line-height: 1em;
-      background-color: #EEE;
-      border-radius: 12px;
-      padding: 6px 8px;
-      margin-right: 4px;
-      font-size: 11px;
     }
   }
 }

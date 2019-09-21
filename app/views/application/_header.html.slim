@@ -38,13 +38,13 @@
 
 header
   - if notice
-    .blue.lighten-3
+    .yellow.lighten-3
       .container
-        p= notice
+        .notice = notice
   - if alert
-    .blue.lighten-3
+    .red.lighten-3
       .container
-        p= alert
+        .alert = alert
   - if current_page?(root_path)
     .parallax-container
       .parallax

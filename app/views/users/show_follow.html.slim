@@ -12,40 +12,15 @@
   - else current_user?(@user)
     .col.s12.m3.right
       =render 'sidenav_user'
-  .col.s12.m9
+  .userList.col.s12.m9
     - if current_page?(following_user_path)
       h2.content-heading #{@user.name}さんのフォロー中
     - else
       h2.content-heading #{@user.name}さんのフォロワー
+    div
+      | #{@users.total_count}件中#{@users.offset_value + 1}
+      | 〜#{@users.offset_value + @users.length}件を表示しています。
     - if @users.any?
       .row
-        - @users.each do |user|
-          .col.s12.m6
-            .userList.card.hoverable
-              .card-content
-                .info.row.valign-wrapper
-                  .col.s8
-                    .names
-                      i.material-icons account_circle
-                      span.name = link_to user.name, user
-                      span.login_name #{"@" + user.login_name}
-                    .follow
-                      a href="#{following_user_path(user)}" 
-                        = user.following.count
-                        | フォロー中
-                      a href="#{followers_user_path(user)}" 
-                        = user.followers.count
-                        | フォロワー
-                  .col.s4
-                    - if user_signed_in?
-                      - unless current_user?(user)
-                          - follow_relation_id = current_user.following?(user) ? current_user.active_follow_relations.find_by(followed_id: user.id).id : nil
-                          .js-follow-relation(data-follow-relation-id="#{follow_relation_id}" data-followed-id="#{user.id}")
-                    - else
-                      =link_to "フォロー", new_user_registration_path, class:'btn waves-effect waves-light'
-                .info.row
-                  .col.s12 
-                    ul.genre
-                      li POPS
-                      li ROCK
-                    .profile = user.profile
+        = render 'user_list'
+      = paginate @users

@@ -1,7 +1,7 @@
 .row.mt-2
   = form_with url: search_events_path, method: :get, local: true do |f|
     .input-field.col.s12.m2.offset-m2
-      = f.select :region, {都道府県を選択: "", 福岡: "福岡",}, value: (params[:region] if params[:region])
+      = f.select :region, prefectures, value: (params[:region] if params[:region])
       label エリア
     .input-field.col.s12.m2
       = f.text_field :gig_date, class:"datepicker", placeholder:"From", value: (params[:gig_date] if params[:gig_date])
@@ -35,71 +35,18 @@ javascript:
       format: "yyyy年mm月dd日(ddd)"
     });
   });
-
-.row
-  .col.s12.m8.offset-m2
-    h2.content-heading 新着イベント
-    - @events.each do |event|
-      .eventList.card.hoverable.mb-0
-        .card-content.valign-wrapper.row.mb-2
-          .date.center-align.col.s12.m2
-            .year= l(event.gig_date, format: :year)
-            .day= l(event.gig_date, format: :day)
-            .time= l(event.gig_date, format: :time)
-          .info.col.s12.m8
-            .title= link_to event.title, event
-            .venue
-              i.material-icons.gray location_on
-              = event.region
-              = event.location
-            ul.genre
-              li POPS
-              li ROCK
-          .participation.center-align.col.s12.m2
-            .current= event.participations.count
-            .target 定員 #{event.target_join_num}
-            .btn-group.row
-              - if user_signed_in?
-                .js-participation(data-participation-id="#{current_user.participating?(event)}" data-event-id="#{event.id}")
-                .js-clip(data-clip-id="#{current_user.clipping?(event)}" data-event-id="#{event.id}")
-              - else
-                =link_to "参加", new_user_registration_path, class:'btn waves-effect waves-light col s12'
-                =link_to "クリップ", new_user_registration_path, class:'btn waves-effect waves-light col s12'
-    .load-more.center-align
-      = link_to "イベントをもっと見る", events_path
-.row
+  
+- if @events
+  .row
+    .eventList.col.s12.m8.offset-m2
+      h2.content-heading 新着イベント
+      = render 'event_list'
+      .load-more.center-align
+        = link_to "イベントをもっと見る", events_path
+.home.row
   .col.s12.m8.offset-m2
     h2.content-heading 新着バンド
-    .row
-      - @users.each do |user|
-        .col.s12.m6
-          .userList.card.hoverable
-            .card-content
-              .info.row.valign-wrapper
-                .col.s8
-                  .names
-                    i.material-icons account_circle
-                    span.name = link_to user.name, user
-                    span.login_name #{"@" + user.login_name}
-                  .follow
-                    a href="#{following_user_path(user)}" 
-                      = user.following.count
-                      | フォロー中
-                    a href="#{followers_user_path(user)}" 
-                      = user.followers.count
-                      | フォロワー
-                .col.s4
-                  - if user_signed_in?
-                    - unless current_user?(user)
-                        - follow_relation_id = current_user.following?(user) ? current_user.active_follow_relations.find_by(followed_id: user.id).id : nil
-                        .js-follow-relation(data-follow-relation-id="#{follow_relation_id}" data-followed-id="#{user.id}")
-                  - else
-                    =link_to "フォロー", new_user_registration_path, class:'btn waves-effect waves-light'
-              .info.row
-                .col.s12 
-                  ul.genre
-                    li POPS
-                    li ROCK
-                  .profile = user.profile
+    .userList.row
+      = render 'user_list'
     .load-more.center-align
       = link_to "バンドをもっと見る", events_path

@@ -11,7 +11,7 @@ Event.create!(
     {
       title: "アニソンで盛り上がる2019夏パーリーナイト！！",
       gig_date: DateTime.new(2019, 9, 26, 17, 00),
-      user_id: "hoge",
+      user_id: 1,
       target_join_num: 5,
       region: "福岡",
       location: "beatStation",
@@ -21,7 +21,7 @@ Event.create!(
     {
       title: "レゲェで盛り上がる2019夏パーリーナイト！！",
       gig_date: DateTime.new(2019, 10, 26, 17, 00),
-      user_id: "hoge",
+      user_id: 1,
       target_join_num: 5,
       region: "大阪",
       location: "ハートビートステーション",
@@ -31,7 +31,7 @@ Event.create!(
     {
       title: "メタルで盛り上がる2019夏パーリーナイト！！",
       gig_date: DateTime.new(2019, 11, 26, 17, 00),
-      user_id: "hoge",
+      user_id: 1,
       target_join_num: 5,
       region: "長崎",
       location: "ヤフオクドーム",
@@ -41,7 +41,7 @@ Event.create!(
     {
       title: "ロックで盛り上がる2019夏パーリーナイト！！",
       gig_date: DateTime.new(2019, 12, 26, 17, 00),
-      user_id: "hoge",
+      user_id: 1,
       target_join_num: 5,
       region: "佐賀",
       location: "Zeppダイバーシティ",
@@ -51,7 +51,7 @@ Event.create!(
     {
       title: "アニソンで盛り上がる2019夏パーリーナイト！！",
       gig_date: DateTime.new(2019, 1, 26, 17, 00),
-      user_id: "hoge",
+      user_id: 1,
       target_join_num: 5,
       region: "福岡",
       location: "beatStation",
@@ -61,7 +61,7 @@ Event.create!(
     {
       title: "レゲェで盛り上がる2019夏パーリーナイト！！",
       gig_date: DateTime.new(2019, 2, 26, 17, 00),
-      user_id: "hoge",
+      user_id: 1,
       target_join_num: 5,
       region: "大阪",
       location: "ハートビートステーション",
@@ -71,7 +71,7 @@ Event.create!(
     {
       title: "メタルで盛り上がる2019夏パーリーナイト！！",
       gig_date: DateTime.new(2019, 3, 26, 17, 00),
-      user_id: "hoge",
+      user_id: 1,
       target_join_num: 5,
       region: "長崎",
       location: "ヤフオクドーム",
@@ -81,7 +81,7 @@ Event.create!(
     {
       title: "ロックで盛り上がる2019夏パーリーナイト！！",
       gig_date: DateTime.new(2019, 4, 26, 17, 00),
-      user_id: "hoge",
+      user_id: 1,
       target_join_num: 5,
       region: "佐賀",
       location: "Zeppダイバーシティ",

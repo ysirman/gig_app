@@ -19,7 +19,7 @@
                   th 参加者
               tbody
                 tr
-                  td = @event.user_id
+                  td = link_to @event.user.name, @event.user
                   td = @event.target_price
                   td #{@event.participations.count}／#{@event.target_join_num}
             h4.content-heading 概要
