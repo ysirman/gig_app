@@ -12,8 +12,8 @@
           = event.region
           = event.location
         ul.genre
-          li POPS
-          li ROCK
+          - genres(event.genre).each do |genre|
+            li = genre
       .participation.center-align.col.s12.m2
         .current= event.participations.count
         .target 定員 #{event.target_join_num}

@@ -5,7 +5,7 @@ class ApplicationController < ActionController::Base
   
     protected
     def configure_permitted_parameters
-        added_attrs = [:login_name, :name, :region, :profile, :men_num, :women_num]
+        added_attrs = [:login_name, :name, :genre, :region, :profile, :men_num, :women_num]
         # サインアップ時のストロングパラメータ
         devise_parameter_sanitizer.permit :sign_up, keys: added_attrs
         # アカウント編集時のストロングパラメータ

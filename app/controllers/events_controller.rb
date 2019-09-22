@@ -57,6 +57,7 @@ class EventsController < ApplicationController
     def event_params
       params.require(:event).permit(
         :title, 
+        :genre,
         :gig_date, 
         :target_join_num, 
         :region, 

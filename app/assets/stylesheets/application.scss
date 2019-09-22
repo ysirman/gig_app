@@ -69,13 +69,13 @@ a:hover {
 .genre {
   li {
     display: inline-block;
-    color: grey;
-    line-height: 1em;
-    background-color: #EEE;
-    border-radius: 12px;
+    margin: 0px 4px 4px 0px;
     padding: 6px 8px;
-    margin-right: 4px;
+    line-height: 1em;
+    border-radius: 12px;
     font-size: 11px;
+    color: grey;
+    background-color: #EEE;
   }
 }
 
@@ -204,6 +204,21 @@ a:hover {
   }
   .is-inactive:before {
     content: "クリップ";
+  }
+}
+
+/*******************************************
+ error
+*******************************************/
+#error_explanation {
+  margin-bottom: 20px;
+  padding: 0px 20px 20px 20px;
+  color: #ff0000;
+  border: 1px solid #ff0000;
+  border-radius: 6px;
+  li {
+    margin-left: 20px;
+    list-style: disc;
   }
 }
 

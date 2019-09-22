@@ -25,6 +25,6 @@
         .info.row
           .col.s12 
             ul.genre
-              li POPS
-              li ROCK
+              - genres(user.genre).each do |genre|
+                li = genre
             .profile = user.profile

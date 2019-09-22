@@ -6,7 +6,7 @@
   .col.s12.m3
     =render 'sidenav_mypage'
   .col.s12.m9
-    h2.content-heading アカウント編集
+    h2.content-heading =t(:".title")
     .row
       .col.s12
         .user.card
@@ -21,6 +21,10 @@
                 = f.label :name
                 br/
                 = f.text_field :name, autocomplete: "name"
+              .field
+                = f.label :genre
+                br/
+                = f.text_field :genre, autocomplete: "genre"
               .field
                 = f.label :region
                 br/
@@ -59,6 +63,6 @@
                 br/
                 = f.password_field :current_password, autocomplete: "current-password"
               .actions
-                = f.submit "Update", class: "btn"
+                = f.submit "更新する", class: "btn"
             h2.content-heading アカウントを削除する 
             = link_to "削除する", registration_path(resource_name), data: { confirm: "本当にアカウント削除しますか?" }, method: :delete, class: 'btn'
