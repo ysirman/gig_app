@@ -26,7 +26,6 @@ $success-color: color("green", "base") !default;
 $error-color: color("red", "base") !default;
 $link-color: color("light-blue", "darken-1") !default;
 @import 'materialize';
-@import '_spacing';
 
 /*******************************************
  common

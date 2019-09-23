@@ -30,12 +30,6 @@ ja:
       title: "%{name}さんの参加イベント"
     show_clip:
       title: "%{name}さんのクリップイベント"
-  devise:
-    registrations:
-      new:
-        title: "アカウント登録"
-      edit:
-        title: "アカウント編集"
   activerecord:
     models:
       user: ユーザー
