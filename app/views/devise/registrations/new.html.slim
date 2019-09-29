@@ -1,6 +1,6 @@
 .row
   .col.s12.m6.offset-m3
-    h2.content-heading =t(:".title")
+    h2.content-heading = t(:'.title')
     .user.card
       .card-content
         = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
@@ -37,5 +37,5 @@
             br/
             = f.password_field :password_confirmation, autocomplete: "new-password"
           .actions
-            = f.submit "Sign up", class: "btn btn-success"
+            = f.submit t(:'.sign_up'), class: "btn btn-success"
         = render "devise/shared/links"
