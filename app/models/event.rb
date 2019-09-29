@@ -2,6 +2,7 @@ class Event < ApplicationRecord
   validates :title, presence: true
   validates :gig_date, presence: true
   validates :target_join_num, presence: true
+  validates :target_price, presence: true
   validates :region, presence: true
   validates :genre, presence: true
 
