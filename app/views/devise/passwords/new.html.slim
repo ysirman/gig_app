@@ -10,5 +10,5 @@
             br/
             = f.email_field :email, autofocus: true, autocomplete: "email"
           .actions
-            = f.submit "Send me reset password instructions", class: "btn"
+            = f.submit t(:'.send_me_reset_password_instructions'), class: "btn"
         = render "devise/shared/links"

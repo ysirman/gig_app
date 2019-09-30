@@ -34,27 +34,30 @@ ja:
     models:
       user: ユーザー
       event: イベント
+      clip: クリップ
+      participation: 参加イベント
     attributes:
       user:
         login_name: ユーザーID
         name: バンド名
         region: 活動地域
-        profile: バンド紹介
+        profile: プロフィール
         genre: ジャンル
         men_num: 男
         women_num: 女
         created_at: 登録日
         updated_at: 更新日
       event:
+        user: 主催ユーザー
         title: タイトル
         genre: ジャンル
         gig_date: 開催日
-        user_id: 主催ユーザーID
         target_join_num: 募集バンド数
         region: 開催地域
         location: 会場
         target_price: 参加費
         description: イベント詳細
+      
   views:
     pagination:
       truncate: …

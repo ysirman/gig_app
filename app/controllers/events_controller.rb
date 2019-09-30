@@ -23,7 +23,7 @@ class EventsController < ApplicationController
     if @event.save
       redirect_to @event, notice: t(:"flash.success.create")
     else
-       :new
+       render :new
     end
   end
 

@@ -76,12 +76,14 @@ ja:
       success: "%{kind} アカウントによる認証に成功しました。"
     passwords:
       edit:
+        title: パスワード変更
         change_my_password: パスワードを変更する
         change_your_password: パスワードを変更
         confirm_new_password: 確認用新しいパスワード
         new_password: 新しいパスワード
       new:
-        forgot_your_password: パスワードを忘れましたか?
+        title: パスワードの再設定
+        forgot_your_password: パスワードを忘れた場合
         send_me_reset_password_instructions: パスワードの再設定方法を送信する
       no_token: このページにはアクセスできません。パスワード再設定メールのリンクからアクセスされた場合には、URL をご確認ください。
       send_instructions: パスワードの再設定について数分以内にメールでご連絡いたします。
@@ -96,7 +98,6 @@ ja:
         cancel_my_account: アカウント削除
         currently_waiting_confirmation_for_email: "%{email} の確認待ち"
         leave_blank_if_you_don_t_want_to_change_it: 空欄のままなら変更しません
-        title: "%{resource}編集"
         unhappy: 気に入りません
         update: 更新
         we_need_your_current_password_to_confirm_your_changes: 変更を反映するには現在のパスワードを入力してください
@@ -113,6 +114,7 @@ ja:
     sessions:
       already_signed_out: 既にログアウト済みです。
       new:
+        title: ログイン
         sign_in: ログイン
       signed_in: ログインしました。
       signed_out: ログアウトしました。
@@ -121,7 +123,7 @@ ja:
         back: 戻る
         didn_t_receive_confirmation_instructions: アカウント確認のメールを受け取っていませんか?
         didn_t_receive_unlock_instructions: アカウントの凍結解除方法のメールを受け取っていませんか?
-        forgot_your_password: パスワードを忘れましたか?
+        forgot_your_password: パスワードを忘れた場合
         sign_in: ログイン
         sign_in_with_provider: "%{provider}でログイン"
         sign_up: アカウント登録
