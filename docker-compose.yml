@@ -1,0 +1,24 @@
+version: '3'
+services:
+  app:
+    build:
+      context: .
+    volumes:
+      - .:/gig_app
+      - public-data:/gig_app/public
+      - tmp-data:/gig_app/tmp
+      - log-data:/gig_app/log
+  nginx:
+    build:
+      context: containers/nginx
+    volumes:
+      - public-data:/gig_app/public
+      - tmp-data:/gig_app/tmp
+    ports:
+      - 80:80
+    depends_on:
+      - app
+volumes:
+  public-data:
+  tmp-data:
+  log-data:
