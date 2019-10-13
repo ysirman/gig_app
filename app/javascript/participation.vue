@@ -1,5 +1,5 @@
 <template>
-  <div class="col s12 participate-btn">
+  <div class="col s3 offset-s3 xl12 participate-btn">
     <a class="btn waves-effect waves-light" :class=" participationId ? 'is-active' : 'is-inactive' " @click="push" >
     </a>
   </div>

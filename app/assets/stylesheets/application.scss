@@ -31,7 +31,7 @@ $link-color: color("light-blue", "darken-1") !default;
  common
 *******************************************/
 .container {
-  width: 1220px;
+  width: 90%;
   padding-top: 18px;
 }
 
@@ -136,7 +136,7 @@ a:hover {
     background-color: red;
   }
   .is-active:hover:before{
-    content: "フォロー解除";
+    content: "解除";
   }
   .is-inactive:before {
     content: "フォロー";
@@ -176,7 +176,7 @@ a:hover {
   }
   .is-active:hover:before{
     color: #FFF;
-    content: "参加キャンセル";
+    content: "キャンセル";
   }
   .is-inactive:before {
     content: "参加";
@@ -199,7 +199,7 @@ a:hover {
     background-color: red;
   }
   .is-active:hover:before{
-    content: "クリップ削除";
+    content: "解除";
   }
   .is-inactive:before {
     content: "クリップ";
@@ -227,10 +227,21 @@ a:hover {
 nav {
   .nav-wrapper {
     padding: 0px 12px;
+    background-color: #fff;
   }
-  .brand-logo,
+  .logo,
   ul a {
     color: #1a237e;
+  }
+  .logo {
+    font-size: 2.1rem;
+  }
+  .name {
+    display: inline-block;
+    max-width: 260px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
   }
 }
 .breadcrumbs {
@@ -248,6 +259,52 @@ nav {
 .notice,
 .alert {
   padding-bottom: 20px;
+}
+
+@media only screen and (max-width: 1200px) {
+  .navbar-fixed {
+    height: 0px;
+  }
+  nav {
+    bottom: 0px;
+    .nav-wrapper {
+      padding: 0px 12px;
+      background-color: #1a237e;
+    }
+    .logo {
+      color: #fff;
+    }
+    ul li a {
+      display: flex;
+      flex-direction: column;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+      width: 100px;
+      color: #fff;
+    }
+    i.responsive {
+      display: block;
+      font-size: 40px;
+      height: 50px;
+      line-height: 50px;
+      text-align: center;
+      margin-right: 0px;
+    }
+    span.responsive {
+      display: block;
+      font-size: 10px;
+      height: 14px;
+      line-height: 8px;
+      text-align: center;
+    }
+    .name {
+      width: 70px;
+    }
+  }
+  .page-footer {
+    margin-bottom: 64px;
+  }
 }
 
 /*******************************************
@@ -365,7 +422,19 @@ nav {
   .names {
     .name {
       font-size: 16px;
+      a {
+        display: inline-block;
+        max-width: 200px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
     }
+  }
+  .genre {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
   }
 }
 
@@ -384,16 +453,13 @@ nav {
     padding: 12px 24px;
   }
   .date {
-    margin-right: 12px;
-    padding: 24px 0px;
+    padding: 6px 0px;
     background-color: #EEE;
-  }
-  .year,
-  .time {
     font-size: 14px;
+  }
+  .year {
     color: #333;
   }
-  .day,
   .participation .current {
     line-height: 2;
     font-size: 22px;
@@ -403,6 +469,7 @@ nav {
     .btn-group {
       margin-top: 16px;
       .btn {
+        width: 116px;
         height: 24px;
         padding: 0;
         line-height: 24px;
@@ -412,10 +479,7 @@ nav {
   }
 
   .info {
-    padding-left: 12px;
-    margin-right: 12px;
-    border-left: 1px solid #DDD;
-    border-right: 1px solid #DDD;
+    border-bottom: 1px solid #DDD;
   }
   .venue {
     color: #888;
@@ -431,6 +495,69 @@ nav {
       margin-bottom: 4px;
       vertical-align: bottom;
       color: #009688;
+    }
+  }
+  .title,
+  .venue,
+  .genre {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+}
+
+@media only screen and (max-width: 1200px) {
+  .eventList {
+    .card-content {
+      padding: 0px 11px 8px 11px;
+    }
+    .date {
+      margin-bottom: 12px;
+    }
+    .year::after,
+    .target::before {
+      content: "/ "
+    }
+    .year, 
+    .day,
+    .current,
+    .target {
+      display: inline-block;
+    }
+    .current {
+      margin-right: 3px;
+    }
+    .participation {
+      .btn-group {
+        margin: 0px;
+      }
+    }
+    .info {
+      text-align: center;
+    }
+  }
+}
+@media only screen and (min-width: 1201px) {
+  .eventList {
+    .card-content {
+      display: flex;
+      align-items: center;
+    }
+    .date {
+      margin-right: 12px;
+      padding: 24px 0px;
+    }
+    .day {
+      line-height: 2;
+      font-size: 22px;
+      font-weight: 700;
+    }
+    .info {
+      padding-left: 12px;
+      margin-right: 12px;
+      border-bottom: none;
+      border-left: 1px solid #DDD;
+      border-right: 1px solid #DDD;
     }
   }
 }

@@ -1,9 +1,9 @@
 - add_breadcrumb "バンド一覧", users_path
 
 .row
-  .col.s12.m3
+  .col.s12.xl3
     =render 'sidenav_search_user'
-  .userList.col.s12.m9
+  .userList.col.s12.xl9
     h2.content-heading =t(:".title")
     div
       | #{@users.total_count}件中#{@users.offset_value + 1}

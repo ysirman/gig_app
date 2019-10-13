@@ -14,7 +14,7 @@ ja:
       time: "%H:%m"
   events:
     index:
-      title: "イベント"
+      title: "イベント一覧"
     new:
       title: "イベント新規作成"
     edit:
