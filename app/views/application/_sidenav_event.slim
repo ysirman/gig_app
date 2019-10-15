@@ -5,9 +5,10 @@
       br
       | @
       = @event.region
-    .location
-      i.material-icons location_on
-      = @event.location
+    - if @event.location.present?
+      .location
+        i.material-icons location_on
+        = @event.location
   .btn-group.row
     - if user_signed_in?
       - if organizer?(@event)
@@ -29,4 +30,3 @@
     li
       i.material-icons delete
       = link_to "イベント削除", @event, method: :delete, data: { confirm: "削除しますか？" }
-        

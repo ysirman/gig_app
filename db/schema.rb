@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_09_29_082537) do
+ActiveRecord::Schema.define(version: 2019_10_14_083644) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -67,7 +67,7 @@ ActiveRecord::Schema.define(version: 2019_09_29_082537) do
     t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "login_name", default: "", null: false
+    t.string "login_name"
     t.string "name", default: "", null: false
     t.string "region"
     t.text "profile"

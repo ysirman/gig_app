@@ -15,6 +15,7 @@
 // const images = require.context('../images', true)
 // const imagePath = (name) => images(name, true)
 
+require('./materialize-form.js')
 require('../follow_relation.js')
 require('../participation.js')
 require('../clip.js')

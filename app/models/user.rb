@@ -1,5 +1,4 @@
 class User < ApplicationRecord
-  validates :login_name, presence: true
   validates :name, presence: true
   validates :genre, presence: true
   validates :region, presence: true

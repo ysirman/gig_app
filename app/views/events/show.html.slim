@@ -19,7 +19,11 @@
                   th 参加者
               tbody
                 tr
-                  td = link_to @event.user.name, @event.user
+                  td
+                    - if @event.user.present?
+                      = link_to @event.user.name, @event.user
+                    - else
+                      | 退会したユーザー
                   td = @event.target_price
                   td #{@event.participations.count}／#{@event.target_join_num}
             h4.content-heading 概要

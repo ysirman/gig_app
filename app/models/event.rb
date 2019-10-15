@@ -33,8 +33,7 @@ class Event < ApplicationRecord
       end
     end
     if params[:gig_date].present?
-      m = params[:gig_date].match(/^(\d{4})年(\d{1,2})月(\d{1,2})日\(.\)$/)
-      gig_date = DateTime.new(m[1].to_i, m[2].to_i, m[3].to_i)
+      gig_date = convert_gig_date_to_i(params[:gig_date])
       query = Event.where('gig_date >= ?', "#{gig_date}")
       result = result ? result.merge(query) : query
     end
@@ -43,5 +42,10 @@ class Event < ApplicationRecord
       result = result ? result.merge(query) : query
     end
     result
+  end
+
+  def self.convert_gig_date_to_i(gig_date)
+    m = gig_date.match(/^(\d{4})年(\d{1,2})月(\d{1,2})日\(.\)$/)
+    gig_date = DateTime.new(m[1].to_i, m[2].to_i, m[3].to_i)
   end
 end

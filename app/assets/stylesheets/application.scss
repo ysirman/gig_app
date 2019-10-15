@@ -211,7 +211,7 @@ a:hover {
 *******************************************/
 #error_explanation {
   margin-bottom: 20px;
-  padding: 0px 20px 20px 20px;
+  padding: 0px 20px;
   color: #ff0000;
   border: 1px solid #ff0000;
   border-radius: 6px;
@@ -231,6 +231,7 @@ nav {
   }
   .logo,
   ul a {
+    height: 64px;
     color: #1a237e;
   }
   .logo {
@@ -594,5 +595,27 @@ nav {
   }
   p {
     line-height: 1.8;
+  }
+}
+
+/*******************************************
+ form
+*******************************************/
+.user_form .require label:first-child::before,
+.event_form .require label:first-child::before {
+  content: "(*必須)　";
+  color: red;
+  font-weight: 700;
+}
+.user_form #user_profile {
+  height: 120px;
+}
+.event_form #event_description {
+  height: 200px;
+}
+.user_form {
+  margin-bottom: 10px;
+  .actions {
+    margin-top: 10px;
   }
 }
