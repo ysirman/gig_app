@@ -1,0 +1,31 @@
+= form_with(model: @user, scope: resource_name, url: registration_path(resource_name), class: 'user_form', local: true) do |f|
+  = render "devise/shared/error_messages", resource: resource
+  .field.require
+    = f.label :name
+    = f.text_field :name, autocomplete: "name", autofocus: true
+  .field.require
+    = f.label :email
+    = f.email_field :email, autocomplete: "email"
+  - if devise_mapping.confirmable? && resource.pending_reconfirmation?
+    div Currently waiting confirmation for: #{resource.unconfirmed_email}
+  .field.require
+    = f.label :genre, "ジャンル（スペース区切りで複数のジャンルを登録できます。）"
+    = f.text_field :genre, autocomplete: "genre"
+  .field.require
+    = f.label :region
+    = f.select :region, prefectures, value: (params[:region] if params[:region])
+  .field.profile
+    = f.label :profile
+    = f.text_area :profile
+  .field class="#{"require" unless user_signed_in?}"
+    = f.label :password, "パスワード（#{@minimum_password_length} 文字以上）" if @minimum_password_length
+    = f.password_field :password, autocomplete: "new-password"
+  .field class="#{"require" unless user_signed_in?}"
+    = f.label :password_confirmation
+    = f.password_field :password_confirmation, autocomplete: "new-password"
+  - if user_signed_in?
+    .field.require
+      = f.label :current_password
+      = f.password_field :current_password, autocomplete: "current-password"
+  .actions
+    = f.submit :class=>"btn"

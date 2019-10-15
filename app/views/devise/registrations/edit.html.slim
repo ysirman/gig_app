@@ -11,58 +11,6 @@
       .col.s12
         .user.card
           .card-content
-            = form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f|
-              = render "devise/shared/error_messages", resource: resource
-              .field
-                = f.label :login_name
-                br/
-                = f.text_field :login_name, autocomplete: "login_name", autofocus: true
-              .field
-                = f.label :name
-                br/
-                = f.text_field :name, autocomplete: "name"
-              .field
-                = f.label :genre
-                br/
-                = f.text_field :genre, autocomplete: "genre"
-              .field
-                = f.label :region
-                br/
-                = f.text_field :region, autocomplete: "region"
-              .field
-                = f.label :men_num
-                br/
-                = f.number_field :men_num
-              .field
-                = f.label :women_num
-                br/
-                = f.number_field :women_num
-              .field
-                = f.label :profile
-                br/
-                = f.text_area :profile
-              .field
-                = f.label :email
-                br/
-                = f.email_field :email, autocomplete: "email"
-              - if devise_mapping.confirmable? && resource.pending_reconfirmation?
-                div Currently waiting confirmation for: #{resource.unconfirmed_email}
-              .field
-                = f.label :password
-                br/
-                = f.password_field :password, autocomplete: "new-password"
-                - if @minimum_password_length
-                  br/
-                  em #{@minimum_password_length} 文字以上
-              .field
-                = f.label :password_confirmation
-                br/
-                = f.password_field :password_confirmation, autocomplete: "new-password"
-              .field
-                = f.label :current_password
-                br/
-                = f.password_field :current_password, autocomplete: "current-password"
-              .actions
-                = f.submit t(:'.update'), class: "btn"
-            .destroy
+            = render 'form', user: @user
+            .destroy_user
               = link_to t(:'.cancel_my_account'), registration_path(resource_name), data: { confirm: "本当にアカウント削除しますか?" }, method: :delete, class: 'btn red'

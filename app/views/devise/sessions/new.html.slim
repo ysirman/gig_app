@@ -3,7 +3,8 @@
     h2.content-heading = t(:'.title')
     .user.card
       .card-content
-        = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+        = form_with(model: @user, scope: resource_name, url: session_path(resource_name), class: 'user_form', local: true) do |f|
+          = render "devise/shared/error_messages", resource: resource
           .field
             = f.label :email
             br/
@@ -14,8 +15,8 @@
             = f.password_field :password, autocomplete: "current-password"
           - if devise_mapping.rememberable?
             .field
-              = f.check_box :remember_me
-              = f.label :remember_me
+              label
+                = f.check_box :remember_me, class: "filled-in"
+                span = t(:'activerecord.attributes.user.remember_me')
           .actions
             = f.submit t(:'.sign_in'), class: "btn"
-        = render "devise/shared/links"

@@ -1,34 +1,42 @@
 .navbar-fixed
   nav
-    .nav-wrapper.white
-      = link_to "Gig", root_path, class: 'brand-logo'
-      ul.right.hide-on-med-and-down
+    .nav-wrapper
+      = link_to "Gig", root_path, class: 'logo'
+      ul.right
+        li
+          = link_to events_path
+            i.material-icons.left.responsive event
+            span.responsive イベント
+        li
+          = link_to users_path
+            i.material-icons.left.responsive people
+            span.responsive バンド
         - if user_signed_in?
-          li= link_to "イベント作成", new_event_path, class: "btn btn-info"
+          li
+            = link_to new_event_path
+              i.material-icons.left.responsive library_add
+              span.responsive イベント作成
           li
             = link_to "/users/#{current_user.id}"
-              i.material-icons.left person
-              | #{current_user.name}
+              i.material-icons.left.responsive person
+              span.responsive.name #{current_user.name}
           li
-            = link_to 'ログアウト', destroy_user_session_path, method: :delete, class: 'waves-effect waves-light btn-small'
+            = link_to destroy_user_session_path, method: :delete
+              i.material-icons.left.responsive exit_to_app
+              span.responsive ログアウト
         - else
           li
-            = link_to "ログイン", new_user_session_path, class: 'waves-effect waves-light btn-small'
+            = link_to new_user_session_path
+              i.material-icons.left.responsive present_to_all
+              span.responsive ログイン
           li
-            = link_to "アカウント登録", new_user_registration_path, class: 'waves-effect waves-light btn-small'
-      ul.right.hide-on-med-and-down
-        li
-          = link_to events_path do
-            i.material-icons.left search
-            | イベントを探す
-        li
-          = link_to users_path do
-            i.material-icons.left search
-            | バンドを探す
+            = link_to new_user_registration_path
+              i.material-icons.left.responsive person_add
+              span.responsive アカウント登録
             
 - if breadcrumbs.present?
-  nav.breadcrumbs.grey.darken-4
-    .nav-wrapper
+  nav.breadcrumbs
+    .nav-wrapper.grey.darken-4
       .col.s12
         - breadcrumbs.each do |breadcrumb|
           - if breadcrumbs.last != breadcrumb
@@ -49,9 +57,3 @@ header
     .parallax-container
       .parallax
         = image_tag 'top.jpg'
-
-javascript:
-  $(document).ready(function(){
-    $('.parallax').parallax();
-  });
-  

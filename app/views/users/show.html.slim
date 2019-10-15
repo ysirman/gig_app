@@ -3,12 +3,12 @@
 
 .row
   - if current_user?(@user)
-    .col.s12.m3
+    .col.s12.xl3
       =render 'sidenav_mypage'
   - else
-    .col.s12.m3.right
+    .col.s12.xl3.right
       =render 'sidenav_user'
-  .col.s12.m9
+  .col.s12.xl9
     h2.content-heading =t(:".title")
     .row
       .col.s12
@@ -19,7 +19,11 @@
                 .names
                   i.material-icons account_circle
                   span.name = @user.name 
-                  span.login_name #{"@" + @user.login_name}
+                  - if @user.login_name.present?
+                    span.login_name #{"@" + @user.login_name}
+                ul.genre
+                  - genres(@user.genre).each do |genre|
+                    li = genre
                 .follow
                   a href="#{following_user_path(@user)}" 
                     = @user.following.count
@@ -35,16 +39,16 @@
                 - else
                   =link_to "フォロー", new_user_registration_path, class:'btn waves-effect waves-light'
             .info.row
-              .label.col.s3 ジャンル
-              .col.s9 = @user.genre
-            .info.row
-              .label.col.s3 紹介文
-              .col.s9 = @user.profile
+              .label.col.s3 =t(:"activerecord.attributes.user.region")
+              .col.s9 = @user.region
             .info.row
               .label.col.s3 = t(:"activerecord.attributes.user.created_at")
               .col.s9 = l(@user.created_at, format: :date_only)
+            .info.row
+              .label.col.s3 =t(:"activerecord.attributes.user.profile")
+              .col.s9 = @user.profile
     -if user_signed_in?
-      - if current_user?(@user)
+      - if current_user?(@user) && @participations.present?
         h2.content-heading フォローしたバンドの参加イベント
         .row
           .col.s12

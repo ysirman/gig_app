@@ -2,9 +2,9 @@
 - add_breadcrumb @event.title, @event
 
 .row
-  .col.s12.m3.push-m9
+  .col.s12.xl3.push-xl9
     =render 'sidenav_event'
-  .col.s12.m9.pull-m3
+  .col.s12.xl9.pull-xl3
     h2.content-heading =@event.title
     .row
       .col.s12
@@ -19,7 +19,11 @@
                   th 参加者
               tbody
                 tr
-                  td = link_to @event.user.name, @event.user
+                  td
+                    - if @event.user.present?
+                      = link_to @event.user.name, @event.user
+                    - else
+                      | 退会したユーザー
                   td = @event.target_price
                   td #{@event.participations.count}／#{@event.target_join_num}
             h4.content-heading 概要

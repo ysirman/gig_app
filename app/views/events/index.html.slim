@@ -1,11 +1,11 @@
-- add_breadcrumb "イベント一覧", events_path
+- add_breadcrumb t(:".title"), events_path
 -if params[:keyword] || params[:gig_date] || params[:region]
   - add_breadcrumb "#{("「" + params[:keyword] + "」の") if params[:keyword]}検索結果：#{@events.total_count}件", events_path
 
 .row
-  .col.s12.m3
+  .col.s12.xl3
     =render 'sidenav_search_event'
-  .eventList.col.s12.m9
+  .eventList.col.s12.xl9
     h2.content-heading =t(:".title")
     div
       | #{@events.total_count}件中#{@events.offset_value + 1}
