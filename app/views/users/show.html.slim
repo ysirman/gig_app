@@ -14,12 +14,13 @@
       .col.s12
         .user.card
           .card-content
-            .info.row.valign-wrapper
-              .col.s9
+            .info.row
+              .col.s12.xl9
                 .names
                   i.material-icons account_circle
                   span.name = @user.name 
                   - if @user.login_name.present?
+                    br
                     span.login_name #{"@" + @user.login_name}
                 ul.genre
                   - genres(@user.genre).each do |genre|
@@ -31,22 +32,23 @@
                   a href="#{followers_user_path(@user)}" 
                     = @user.followers.count
                     | フォロワー
-              .col.s3
-                - if user_signed_in?
-                  - unless current_user?(@user)
-                      - follow_relation_id = current_user.following?(@user) ? current_user.active_follow_relations.find_by(followed_id: @user.id).id : nil
-                      .js-follow-relation(data-follow-relation-id="#{follow_relation_id}" data-followed-id="#{@user.id}")
-                - else
+              - if user_signed_in?
+                - unless current_user?(@user)
+                  .col.s12.xl3
+                    - follow_relation_id = current_user.following?(@user) ? current_user.active_follow_relations.find_by(followed_id: @user.id).id : nil
+                    .js-follow-relation(data-follow-relation-id="#{follow_relation_id}" data-followed-id="#{@user.id}")
+              - else
+                .col.s12.xl3
                   =link_to "フォロー", new_user_registration_path, class:'btn waves-effect waves-light'
             .info.row
-              .label.col.s3 =t(:"activerecord.attributes.user.region")
-              .col.s9 = @user.region
+              .label.col.s12.xl3 =t(:"activerecord.attributes.user.region")
+              .col.s12 = @user.region
             .info.row
-              .label.col.s3 = t(:"activerecord.attributes.user.created_at")
-              .col.s9 = l(@user.created_at, format: :date_only)
+              .label.col.s12.xl3 = t(:"activerecord.attributes.user.created_at")
+              .col.s12 = l(@user.created_at, format: :date_only)
             .info.row
-              .label.col.s3 =t(:"activerecord.attributes.user.profile")
-              .col.s9 = @user.profile
+              .label.col.s12.xl3 =t(:"activerecord.attributes.user.profile")
+              .col.s12 = @user.profile
     -if user_signed_in?
       - if current_user?(@user) && @participations.present?
         h2.content-heading フォローしたバンドの参加イベント

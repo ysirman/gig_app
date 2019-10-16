@@ -1,5 +1,5 @@
 <template>
-  <div class="col s3 xl12 clip-btn">
+  <div class="col s6 xl12 clip-btn">
     <a class="btn waves-effect waves-light" :class=" clipId ? 'is-active' : 'is-inactive' " @click="push" >
     </a>
   </div>

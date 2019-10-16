@@ -18,7 +18,7 @@
               span.responsive イベント作成
           li
             = link_to "/users/#{current_user.id}"
-              i.material-icons.left.responsive person
+              i.material-icons.left.responsive account_circle
               span.responsive.name #{current_user.name}
           li
             = link_to destroy_user_session_path, method: :delete
