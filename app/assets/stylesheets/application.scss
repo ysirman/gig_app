@@ -55,6 +55,15 @@ a:hover {
   height: 360px;
 }
 
+@media only screen and (max-width: 1200px) {
+  .container {
+    width: 99%;
+  }
+  .parallax-container {
+    height: 100vh;
+  }
+}
+
 /*******************************************
  heading
 *******************************************/
@@ -62,6 +71,7 @@ a:hover {
   font-size: 22px;
   font-weight: 700;
 }
+
 /*******************************************
  icon
 *******************************************/
@@ -89,6 +99,12 @@ a:hover {
     vertical-align: bottom;
     margin-right: 2px;
     font-size: 20px;
+  }
+}
+
+@media only screen and (max-width: 1200px) {
+  .genre {
+    margin: 5px 0px;
   }
 }
 
@@ -231,7 +247,6 @@ nav {
   }
   .logo,
   ul a {
-    height: 64px;
     color: #1a237e;
   }
   .logo {
@@ -272,39 +287,24 @@ nav {
       padding: 0px 12px;
       background-color: #1a237e;
     }
-    .logo {
+    .logo,
+    ul li a {
       color: #fff;
     }
     ul li a {
-      display: flex;
-      flex-direction: column;
-      flex-wrap: wrap;
-      justify-content: center;
-      align-items: center;
-      width: 100px;
-      color: #fff;
+      width: 46px;
     }
     i.responsive {
-      display: block;
-      font-size: 40px;
-      height: 50px;
-      line-height: 50px;
+      font-size: 30px;
       text-align: center;
       margin-right: 0px;
     }
     span.responsive {
-      display: block;
-      font-size: 10px;
-      height: 14px;
-      line-height: 8px;
-      text-align: center;
-    }
-    .name {
-      width: 70px;
+      display: none;
     }
   }
   .page-footer {
-    margin-bottom: 64px;
+    margin-bottom: 54px;
   }
 }
 
@@ -367,7 +367,6 @@ nav {
 .userList {
   .names {
     margin-bottom: 6px;
-    line-height: 20px;
     i, 
     .name, 
     .login_name {
@@ -400,6 +399,9 @@ nav {
 }
 
 .user {
+  .names {
+    line-height: 20px;
+  }
   padding: 24px 42px;
   .info {
     margin-bottom: 0px;
@@ -414,6 +416,9 @@ nav {
   }
 }
 .userList {
+  .names {
+    line-height: 16px;
+  }
   margin-bottom: 5px;
   .info:first-child {
     margin-bottom: 10px;
@@ -425,7 +430,7 @@ nav {
       font-size: 16px;
       a {
         display: inline-block;
-        max-width: 200px;
+        max-width: 172px;
         overflow: hidden;
         text-overflow: ellipsis;
         white-space: nowrap;
@@ -443,6 +448,41 @@ nav {
   .date {
     color: #666;
     font-size: 12px;
+  }
+}
+
+@media only screen and (max-width: 1200px) {
+  .user {
+    padding: 6px;
+    .card-content {
+      padding: 0px;
+      .info:last-child {
+        border-bottom: none;
+      }
+    }
+  }
+  .userList {
+    .card .card-content {
+      padding: 6px;
+    }
+  }
+  .user .follow-relation,
+  .userList .follow-relation {
+    margin-top: 6px;
+  }
+  .user .names {
+    line-height: 28px;
+  }
+  .userList .names {
+    line-height: 19px;
+  }
+  .user .names i,
+  .userList .names i {
+    padding-top: 0px;
+  }
+  .user .names .name,
+  .userList .names .name {
+    display: inline;
   }
 }
 
@@ -510,10 +550,12 @@ nav {
 @media only screen and (max-width: 1200px) {
   .eventList {
     .card-content {
-      padding: 0px 11px 8px 11px;
+      padding: 0px 11px 2px 11px;
     }
     .date {
       margin-bottom: 12px;
+      background-color: #CCC;
+      font-weight: 700;
     }
     .year::after,
     .target::before {
@@ -524,6 +566,12 @@ nav {
     .current,
     .target {
       display: inline-block;
+    }
+    .participation .current {
+      line-height: 1.8;
+    }
+    .title {
+      margin-bottom: 0px;
     }
     .current {
       margin-right: 3px;
@@ -595,6 +643,15 @@ nav {
   }
   p {
     line-height: 1.8;
+  }
+}
+
+@media only screen and (max-width: 1200px) {
+  .event {
+    padding: 6px;
+    .card-content {
+      padding: 0px;
+    }
   }
 }
 
