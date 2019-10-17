@@ -15,7 +15,6 @@ WORKDIR /gig_app
 COPY Gemfile /gig_app/Gemfile
 COPY Gemfile.lock /gig_app/Gemfile.lock
 RUN bundle install
-RUN bin/yarn
 COPY . /gig_app
 RUN mkdir -p tmp/sockets
 
