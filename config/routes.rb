@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
   root "home#index"
+  get '/about', to: 'home#about'
+  get '/disclaimer', to: 'home#disclaimer'
+
   resources :events do
     collection do
       get :search

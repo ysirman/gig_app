@@ -676,3 +676,11 @@ nav {
     margin-top: 10px;
   }
 }
+
+/*******************************************
+ static pages
+*******************************************/
+.about .card .card-content p,
+.disclaimer .card .card-content p {
+  margin-bottom: 10px;
+}
