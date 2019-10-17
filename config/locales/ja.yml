@@ -13,6 +13,11 @@ ja:
       year: "%Y"
       day: "%m/%d(%a)"
       time: "%H:%m"
+  home:
+    about:
+      title: "Gigとは？"
+    disclaimer:
+      title: "免責事項"
   events:
     index:
       title: "イベント一覧"
