@@ -20,6 +20,6 @@ $(document).ready(function(){
     },
     showClearBtn: true,
     autoClose: true,
-    format: "yyyy年mm月dd日(ddd)"
+    format: "yyyy/mm/dd"
   });
 });
