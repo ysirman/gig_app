@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class User < ApplicationRecord
   validates :name, presence: true
   validates :genre, presence: true
@@ -21,13 +23,13 @@ class User < ApplicationRecord
   # イベント参加の設定
   has_many :participations, dependent: :destroy
   has_many :participate_events, through: :participations, source: :event
-  
+
   # クリップの設定
   has_many :clips, dependent: :destroy
   has_many :clip_events, through: :clips, source: :event
 
   paginates_per 20
-  
+
   # ユーザーをフォローする
   def follow(other_user)
     following << other_user
@@ -61,12 +63,12 @@ class User < ApplicationRecord
     if params[:keyword].present?
       keywords = params[:keyword].split(/[[:blank:]]/)
       queries = keywords.map do |keyword|
-        User.where('login_name LIKE ?', "%#{keyword}%")
-        .or(User.where('name LIKE ?', "%#{keyword}%"))
-        .or(User.where('profile LIKE ?', "%#{keyword}%"))
-        .or(User.where('genre LIKE ?', "%#{keyword}%"))
+        User.where("login_name LIKE ?", "%#{keyword}%")
+        .or(User.where("name LIKE ?", "%#{keyword}%"))
+        .or(User.where("profile LIKE ?", "%#{keyword}%"))
+        .or(User.where("genre LIKE ?", "%#{keyword}%"))
       end
-      results = queries.inject do |scope, query| 
+      results = queries.inject do |scope, query|
         scope.or(query)
       end
       result = results
@@ -74,9 +76,9 @@ class User < ApplicationRecord
     if params[:genre].present?
       genres = params[:genre].split(/[[:blank:]]/)
       queries = genres.map do |genre|
-        User.where('genre LIKE ?', "%#{genre}%")
+        User.where("genre LIKE ?", "%#{genre}%")
       end
-      results = queries.inject do |scope, query| 
+      results = queries.inject do |scope, query|
         scope.or(query)
       end
       result = result ? result.merge(results) : results

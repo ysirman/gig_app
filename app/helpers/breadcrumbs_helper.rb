@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module BreadcrumbsHelper
   def add_breadcrumb(name, path)
     unless @_breadcrumbs

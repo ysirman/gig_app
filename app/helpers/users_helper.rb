@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module UsersHelper
   # 渡されたユーザーがログイン済みユーザーであればtrueを返す
   def current_user?(user)
