@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class CreateClips < ActiveRecord::Migration[5.2]
   def change
     create_table :clips do |t|

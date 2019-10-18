@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class EventsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :edit, :update, :destroy]
   before_action :set_event, only: [:show, :edit, :update, :destroy]
@@ -23,7 +25,7 @@ class EventsController < ApplicationController
     if @event.save
       redirect_to @event, notice: t(:"flash.success.create")
     else
-       render :new
+      render :new
     end
   end
 
@@ -56,13 +58,13 @@ class EventsController < ApplicationController
 
     def event_params
       params.require(:event).permit(
-        :title, 
+        :title,
         :genre,
-        :gig_date, 
-        :target_join_num, 
-        :region, 
-        :location, 
-        :target_price, 
+        :gig_date,
+        :target_join_num,
+        :region,
+        :location,
+        :target_price,
         :description)
     end
 

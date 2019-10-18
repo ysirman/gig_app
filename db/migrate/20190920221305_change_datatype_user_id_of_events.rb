@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class ChangeDatatypeUserIdOfEvents < ActiveRecord::Migration[5.2]
   def change
     remove_column :events, :user_id, :string

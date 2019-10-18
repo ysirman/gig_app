@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Event < ApplicationRecord
   validates :title, presence: true
   validates :gig_date, presence: true
@@ -24,16 +26,16 @@ class Event < ApplicationRecord
     if params[:keyword].present?
       keywords = params[:keyword].split(/[[:blank:]]/)
       queries = keywords.map do |keyword|
-        Event.where('title LIKE ?', "%#{keyword}%")
-        .or(Event.where('description LIKE ?', "%#{keyword}%"))
-        .or(Event.where('location LIKE ?', "%#{keyword}%"))
+        Event.where("title LIKE ?", "%#{keyword}%")
+        .or(Event.where("description LIKE ?", "%#{keyword}%"))
+        .or(Event.where("location LIKE ?", "%#{keyword}%"))
       end
-      result = queries.inject do |scope, query| 
+      result = queries.inject do |scope, query|
         scope.or(query)
       end
     end
     if params[:gig_date].present?
-      query = Event.where('gig_date >= ?', "#{params[:gig_date]}")
+      query = Event.where("gig_date >= ?", "#{params[:gig_date]}")
       result = result ? result.merge(query) : query
     end
     if params[:region].present?
