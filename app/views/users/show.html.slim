@@ -24,7 +24,7 @@
                     span.login_name #{"@" + @user.login_name}
                 ul.genre
                   - genres(@user.genre).each do |genre|
-                    li = genre
+                    li = link_to genre, search_users_path(genre: genre)
                 .follow
                   a href="#{following_user_path(@user)}" 
                     = @user.following.count

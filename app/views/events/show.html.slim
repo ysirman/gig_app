@@ -27,4 +27,7 @@
                   td = @event.target_price
                   td #{@event.participations.count}／#{@event.target_join_num}
             h4.content-heading 概要
+            ul.genre
+              - genres(@event.genre).each do |genre|
+                li = link_to genre, search_events_path(keyword: genre)
             p = @event.description
