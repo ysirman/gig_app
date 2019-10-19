@@ -83,8 +83,16 @@ a:hover {
     line-height: 1em;
     border-radius: 12px;
     font-size: 11px;
-    color: grey;
     background-color: #EEE;
+    a {
+      color: grey;
+    }
+    a:hover {
+      text-decoration: none;
+    }
+  }
+  li:hover {
+    background-color: #DDD;
   }
 }
 

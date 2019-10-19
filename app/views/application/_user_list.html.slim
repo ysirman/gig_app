@@ -29,5 +29,5 @@
           .col.s12 
             ul.genre
               - genres(user.genre).each do |genre|
-                li = genre
+                li = link_to genre, search_users_path(genre: genre)
             .profile = user.profile
