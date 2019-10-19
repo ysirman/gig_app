@@ -32,6 +32,8 @@ ja:
       title: "プロフィール"
     edit:
       title: "プロフィール編集"
+    show_event:
+      title: "%{name}さんの主催イベント"
     show_participation:
       title: "%{name}さんの参加イベント"
     show_clip:
