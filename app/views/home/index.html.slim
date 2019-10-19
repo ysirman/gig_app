@@ -1,4 +1,4 @@
-.row
+.row.searchCondition
   = form_with url: search_events_path, method: :get, local: true do |f|
     .input-field.col.s12.xl2.offset-xl2
       = f.select :region, prefectures, value: (params[:region] if params[:region])

@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class UsersController < ApplicationController
-  before_action :set_user, only: [:show, :following, :followers, :participations, :clips]
+  before_action :set_user, only: [:show, :following, :followers, :events, :participations, :clips]
 
   def index
     @users = User.order(created_at: :desc).page(params[:page])
@@ -19,6 +19,11 @@ class UsersController < ApplicationController
   def followers
     @users = @user.followers.page(params[:page])
     render :show_follow
+  end
+
+  def events
+    @events = @user.events.page(params[:page])
+    render :show_event
   end
 
   def participations

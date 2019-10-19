@@ -13,14 +13,14 @@
             | @#{event.location}
         ul.genre
           - genres(event.genre).each do |genre|
-            li = genre
+            li = link_to genre, search_events_path(keyword: genre)
       .participation.center-align.col.s12.xl2
         .current= event.participations.count
         .target 定員 #{event.target_join_num}
         .btn-group.row
           - if user_signed_in?
             - if organizer?(event)
-              .organizer.center-align.col.s4.offset-s4.xl12
+              .organizer.center-align.col.s12
                 i.material-icons stars
                 | 主催イベント
             - else
@@ -28,6 +28,6 @@
               .js-clip(data-clip-id="#{current_user.clipping?(event)}" data-event-id="#{event.id}")
           - else
             .participate-btn.col.s6.xl12
-              =link_to "参加", new_user_registration_path, class:'btn waves-effect waves-light col s12'
+              =link_to "参加", new_user_registration_path, class:'btn waves-effect waves-light'
             .clip-btn.col.s6.xl12
-              =link_to "クリップ", new_user_registration_path, class:'btn waves-effect waves-light col s12'
+              =link_to "クリップ", new_user_registration_path, class:'btn waves-effect waves-light'

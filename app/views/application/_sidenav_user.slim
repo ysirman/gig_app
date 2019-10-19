@@ -1,8 +1,11 @@
 #sidebar.card.grey.lighten-4
-  ul.mypage
+  ul.user_nav
     li
       i.material-icons account_circle
       = link_to "プロフィール", @user
+    li
+      i.material-icons stars
+      = link_to "主催イベント", events_user_path
     li
       i.material-icons event
       = link_to "参加イベント", participations_user_path

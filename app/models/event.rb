@@ -29,6 +29,7 @@ class Event < ApplicationRecord
         Event.where("title LIKE ?", "%#{keyword}%")
         .or(Event.where("description LIKE ?", "%#{keyword}%"))
         .or(Event.where("location LIKE ?", "%#{keyword}%"))
+        .or(Event.where("genre LIKE ?", "%#{keyword}%"))
       end
       result = queries.inject do |scope, query|
         scope.or(query)

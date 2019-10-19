@@ -53,6 +53,17 @@ a:hover {
 
 .parallax-container {
   height: 360px;
+  .parallax-inner {
+    position: absolute;
+    width: 100%;
+    top: 43%;
+    text-align: center;
+    color: #fff;
+    .heading {
+      font-size: 40px;
+      font-weight: 700;
+    }
+  }
 }
 
 @media only screen and (max-width: 1200px) {
@@ -61,6 +72,12 @@ a:hover {
   }
   .parallax-container {
     height: 100vh;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .parallax-container .parallax-inner {
+    top: 38%;
   }
 }
 
@@ -83,8 +100,16 @@ a:hover {
     line-height: 1em;
     border-radius: 12px;
     font-size: 11px;
-    color: grey;
     background-color: #EEE;
+    a {
+      color: grey;
+    }
+    a:hover {
+      text-decoration: none;
+    }
+  }
+  li:hover {
+    background-color: #DDD;
   }
 }
 
@@ -222,6 +247,15 @@ a:hover {
   }
 }
 
+@media only screen and (max-width: 1200px) {
+  .user_form .btn,
+  .user_form.btn,
+  .event_form .btn,
+  .searchCondition .btn {
+    width: 100%;
+  }
+}
+
 /*******************************************
  error
 *******************************************/
@@ -248,6 +282,7 @@ nav {
   .logo,
   ul a {
     color: #1a237e;
+    height: 64px;
   }
   .logo {
     font-size: 2.1rem;
@@ -315,6 +350,7 @@ nav {
   padding: 10px 20px 20px 20px;
   border-top: 5px solid #212121;
   .mypage_nav,
+  .user_nav,
   .event_nav {
     i {
       vertical-align: bottom;

@@ -16,6 +16,7 @@ Rails.application.routes.draw do
       get :following, :followers
       get :participations
       get :clips
+      get :events
     end
     collection do
       get :search

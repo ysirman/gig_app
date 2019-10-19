@@ -4,6 +4,9 @@
       i.material-icons account_circle
       = link_to t(:'activerecord.attributes.user.profile'), current_user
     li
+      i.material-icons stars
+      = link_to "主催イベント", events_user_path(current_user.id)
+    li
       i.material-icons event
       = link_to t(:'activerecord.models.participation'), participations_user_path(current_user.id)
     li
