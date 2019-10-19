@@ -53,6 +53,17 @@ a:hover {
 
 .parallax-container {
   height: 360px;
+  .parallax-inner {
+    position: absolute;
+    width: 100%;
+    top: 43%;
+    text-align: center;
+    color: #fff;
+    .heading {
+      font-size: 40px;
+      font-weight: 700;
+    }
+  }
 }
 
 @media only screen and (max-width: 1200px) {
@@ -61,6 +72,12 @@ a:hover {
   }
   .parallax-container {
     height: 100vh;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .parallax-container .parallax-inner {
+    top: 38%;
   }
 }
 
