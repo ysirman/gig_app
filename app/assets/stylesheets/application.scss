@@ -247,6 +247,15 @@ a:hover {
   }
 }
 
+@media only screen and (max-width: 1200px) {
+  .user_form .btn,
+  .user_form.btn,
+  .event_form .btn,
+  .searchCondition .btn {
+    width: 100%;
+  }
+}
+
 /*******************************************
  error
 *******************************************/
