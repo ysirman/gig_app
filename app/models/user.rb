@@ -9,7 +9,7 @@ class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable
+         :recoverable, :rememberable, :validatable, :omniauthable
 
   # フォローの設定
   has_many :active_follow_relations, class_name:  "FollowRelation", foreign_key: "follower_id", dependent: :destroy
@@ -89,4 +89,21 @@ class User < ApplicationRecord
     end
     result
   end
+
+  def self.from_omniauth(auth)
+    where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
+      user.email = User.dummy_email(auth)
+      user.password = Devise.friendly_token[0, 20]
+      user.name = auth.info.name
+      user.login_name = auth.info.nickname
+      user.region = auth.info.location
+      user.profile = auth.info.description
+      user.genre = "ALL"
+    end
+  end
+
+  private
+    def self.dummy_email(auth)
+      "#{auth.uid}-#{auth.provider}@example.com"
+    end
 end
