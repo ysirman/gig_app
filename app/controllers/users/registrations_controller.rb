@@ -4,4 +4,13 @@ class Users::RegistrationsController < Devise::RegistrationsController
     hash[:uid] = User.create_unique_string
     super
   end
+
+  protected
+    def update_resource(resource, params)
+      resource.update_without_password(params)
+    end
+
+    def after_update_path_for(resource)
+      user_path(current_user.id)
+    end
 end
