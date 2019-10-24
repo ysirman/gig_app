@@ -692,6 +692,13 @@ nav {
   p {
     line-height: 1.8;
   }
+  .participant_list {
+    li {
+      margin-left: 20px;
+      line-height: 1.8;
+      list-style: disc;
+    }
+  }
 }
 
 @media only screen and (max-width: 1200px) {

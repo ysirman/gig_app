@@ -31,3 +31,8 @@
               - genres(@event.genre).each do |genre|
                 li = link_to genre, search_events_path(keyword: genre)
             p = @event.description
+            - if @event.participations.present?
+              h4.content-heading 参加者
+              ul.participant_list
+                - @event.participations.each do |participant|
+                  li = link_to participant.user.name, user_path(participant.user.id)
