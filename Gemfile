@@ -47,9 +47,10 @@ gem "materialize-sass"
 gem "material_icons"
 gem "rails-i18n"
 gem "devise"
+gem "omniauth"
+gem "omniauth-twitter"
+gem "dotenv-rails", "~> 2.1", ">= 2.1.1"
 gem "kaminari"
-# vue用の設定
-gem "foreman"
 
 
 group :development, :test do

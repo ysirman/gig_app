@@ -20,3 +20,6 @@
                 span = t(:'activerecord.attributes.user.remember_me')
           .actions
             = f.submit t(:'.sign_in'), class: "btn"
+        - resource_class.omniauth_providers.each do |provider|
+          .omniauth
+            = link_to t(:'devise.shared.links.sign_in_with_provider', provider: OmniAuth::Utils.camelize(provider)), omniauth_authorize_path(resource_name, provider), class: "btn blue"

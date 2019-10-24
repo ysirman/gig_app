@@ -21,7 +21,8 @@
                   span.name = @user.name 
                   - if @user.login_name.present?
                     br
-                    span.login_name #{"@" + @user.login_name}
+                    span.login_name
+                      = link_to "@#{@user.login_name}", "https://twitter.com/#{@user.login_name}"
                 ul.genre
                   - genres(@user.genre).each do |genre|
                     li = link_to genre, search_users_path(genre: genre)
