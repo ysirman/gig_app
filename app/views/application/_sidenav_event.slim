@@ -23,10 +23,11 @@
         =link_to "参加", new_user_registration_path, class:'btn waves-effect waves-light col s12'
       .clip-btn.col.s12
         =link_to "クリップ", new_user_registration_path, class:'btn waves-effect waves-light col s12'
-  ul.event_nav.center-align
-    li
-      i.material-icons edit
-      = link_to "イベント編集", edit_event_path(@event)
-    li
-      i.material-icons delete
-      = link_to "イベント削除", @event, method: :delete, data: { confirm: "削除しますか？" }
+  - if user_signed_in? && organizer?(@event)
+    ul.event_nav.center-align
+      li
+        i.material-icons edit
+        = link_to "イベント編集", edit_event_path(@event)
+      li
+        i.material-icons delete
+        = link_to "イベント削除", @event, method: :delete, data: { confirm: "削除しますか？" }
