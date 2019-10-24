@@ -10,7 +10,7 @@ Rails.application.routes.draw do
       get :search
     end
   end
-  devise_for :users, controllers: { 
+  devise_for :users, controllers: {
     omniauth_callbacks: "users/omniauth_callbacks",
     registrations: "users/registrations"
   }
