@@ -90,15 +90,24 @@ class User < ApplicationRecord
     result
   end
 
-  def self.from_omniauth(auth)
-    where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
-      user.email = User.dummy_email(auth)
-      user.password = Devise.friendly_token[0, 20]
-      user.name = auth.info.name
-      user.login_name = auth.info.nickname
-      user.region = auth.info.location
-      user.profile = auth.info.description
-      user.genre = "ALL"
+  def self.from_omniauth(auth, signed_in_resource)
+    if signed_in_resource
+      signed_in_resource.update!(
+        provider: auth.provider,
+        uid: auth.uid,
+        login_name: auth.info.nickname
+      )
+      signed_in_resource
+    else
+      where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
+        user.email = User.dummy_email(auth)
+        user.password = Devise.friendly_token[0, 20]
+        user.name = auth.info.name
+        user.login_name = auth.info.nickname
+        user.region = auth.info.location
+        user.profile = auth.info.description
+        user.genre = "ALL"
+      end
     end
   end
 

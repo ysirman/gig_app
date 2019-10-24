@@ -25,3 +25,13 @@
     = f.password_field :password_confirmation, autocomplete: "new-password"
   .actions
     = f.submit :class=>"btn"
+
+.omniauth
+  - if user_signed_in?
+    - if current_user.provider.present?
+      .btn.blue.disabled
+        | TWITTERアカウント連携済み
+    - else
+      = link_to "TWITTERアカウントと連携", omniauth_authorize_path(resource_name, :twitter), class: "btn blue"
+  - else
+    = link_to t(:'devise.shared.links.sign_in_with_provider', provider: :twitter), omniauth_authorize_path(resource_name, :twitter), class: "btn blue"

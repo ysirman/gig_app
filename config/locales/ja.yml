@@ -78,3 +78,4 @@ ja:
       create: "登録に成功しました。"
       update: "内容が更新されました。"
       destroy: "登録内容が削除されました。"
+      destroy_omniauth: "アカウント連携が解除されました。"
