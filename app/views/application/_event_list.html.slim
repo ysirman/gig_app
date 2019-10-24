@@ -5,6 +5,8 @@
         .year= l(event.gig_date, format: :year)
         .day= l(event.gig_date, format: :day)
       .info.col.s12.xl8
+        - if event.gig_date < DateTime.now.yesterday
+          span.end 終了
         .title = link_to event.title, event
         .venue
           i.material-icons.gray location_on

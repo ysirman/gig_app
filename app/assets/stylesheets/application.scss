@@ -562,6 +562,12 @@ nav {
   .info {
     border-bottom: 1px solid #DDD;
   }
+  .end {
+    padding: 4px 12px;
+    font-size: 12px;
+    color: #fff;
+    background-color: #333;
+  }
   .venue {
     color: #888;
     i {
@@ -569,6 +575,7 @@ nav {
     }
   }
   .title {
+    margin-top: 4px;
     margin-bottom: 10px;
     font-size: 1.4rem;
     font-weight: 700;
