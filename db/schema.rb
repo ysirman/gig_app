@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 # This file is auto-generated from the current state of the database. Instead
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
@@ -12,7 +10,8 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_10_20_042320) do
+ActiveRecord::Schema.define(version: 2019_10_26_080229) do
+
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -38,6 +37,7 @@ ActiveRecord::Schema.define(version: 2019_10_20_042320) do
     t.datetime "updated_at", null: false
     t.string "genre", default: "ALL", null: false
     t.integer "user_id", default: 0, null: false
+    t.boolean "fixed", default: false, null: false
   end
 
   create_table "follow_relations", force: :cascade do |t|
@@ -82,4 +82,5 @@ ActiveRecord::Schema.define(version: 2019_10_20_042320) do
     t.index ["provider", "uid"], name: "index_users_on_provider_and_uid", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
+
 end

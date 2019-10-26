@@ -20,16 +20,19 @@
         .current= event.participations.count
         .target 定員 #{event.target_join_num}
         .btn-group.row
-          - if user_signed_in?
-            - if organizer?(event)
-              .organizer.center-align.col.s12
-                i.material-icons stars
-                | 主催イベント
-            - else
-              .js-participation(data-participation-id="#{current_user.participating?(event)}" data-event-id="#{event.id}")
-              .js-clip(data-clip-id="#{current_user.clipping?(event)}" data-event-id="#{event.id}")
+          - if event.fixed
+            .btn.disabled 募集終了
           - else
-            .participate-btn.col.s6.xl12
-              =link_to "参加", new_user_registration_path, class:'btn waves-effect waves-light'
-            .clip-btn.col.s6.xl12
-              =link_to "クリップ", new_user_registration_path, class:'btn waves-effect waves-light'
+            - if user_signed_in?
+              - if organizer?(event)
+                .organizer.center-align.col.s12
+                  i.material-icons stars
+                  | 主催イベント
+              - else
+                .js-participation(data-participation-id="#{current_user.participating?(event)}" data-event-id="#{event.id}")
+                .js-clip(data-clip-id="#{current_user.clipping?(event)}" data-event-id="#{event.id}")
+            - else
+              .participate-btn.col.s6.xl12
+                =link_to "参加", new_user_registration_path, class:'btn waves-effect waves-light'
+              .clip-btn.col.s6.xl12
+                =link_to "クリップ", new_user_registration_path, class:'btn waves-effect waves-light'

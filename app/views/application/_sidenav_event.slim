@@ -31,3 +31,6 @@
       li
         i.material-icons delete
         = link_to "イベント削除", @event, method: :delete, data: { confirm: "削除しますか？" }
+    .row
+      - unless @event.fixed
+        = link_to "募集を締め切る", fix_event_path(@event), class: "btn red waves-effect waves-light col s12", data: { confirm: "一度締め切ると取り消せません。募集を締め切ってよろしいですか？" }

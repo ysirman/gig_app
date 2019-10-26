@@ -25,7 +25,7 @@ export default {
         M.toast({html: 'キャンセルしました'})
       } else {
         this.participate()
-        M.toast({html: '参加しました'})
+        M.toast({html: '参加申込しました'})
       }
     },
     participate () {

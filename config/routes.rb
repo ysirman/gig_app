@@ -6,6 +6,9 @@ Rails.application.routes.draw do
   get "/disclaimer", to: "home#disclaimer"
 
   resources :events do
+    member do
+      get :fix
+    end
     collection do
       get :search
     end

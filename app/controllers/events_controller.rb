@@ -1,9 +1,9 @@
 # frozen_string_literal: true
 
 class EventsController < ApplicationController
-  before_action :authenticate_user!, only: [:new, :edit, :update, :destroy]
+  before_action :authenticate_user!, only: [:new, :edit, :update, :destroy, :fix]
   before_action :set_event, only: [:show, :edit, :update, :destroy]
-  before_action :correct_user, only: [:edit, :update, :destroy]
+  before_action :correct_user, only: [:edit, :update, :destroy, :fix]
 
   def index
     @events = Event.all.order(gig_date: :desc).page(params[:page])
@@ -40,6 +40,11 @@ class EventsController < ApplicationController
   def destroy
     @event.destroy
     redirect_to events_url, notice: t(:"flash.success.destroy")
+  end
+
+  def fix
+    @event.update(fixed: true)
+    redirect_to @event
   end
 
   def search
