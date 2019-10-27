@@ -256,6 +256,7 @@ a:hover {
   .user_form.btn,
   .omniauth .btn,
   .event_form .btn,
+  .participant_form .btn,
   .searchCondition .btn {
     width: 100%;
   }
@@ -729,6 +730,15 @@ nav {
   margin-bottom: 10px;
   .actions {
     margin-top: 10px;
+  }
+}
+.participant_form {
+  .field {
+    margin-bottom: 12px;
+    .fix {
+      display: block;
+      line-height: 2.4;
+    }
   }
 }
 

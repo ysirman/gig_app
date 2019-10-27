@@ -30,7 +30,11 @@ Rails.application.routes.draw do
   end
   namespace "api" do
     resources :follow_relations, only: [:create, :destroy]
-    resources :participations, only: [:create, :destroy]
+    resources :participations, only: [:create, :destroy] do
+      collection do
+        put :fix
+      end
+    end
     resources :clips, only: [:create, :destroy]
   end
 end

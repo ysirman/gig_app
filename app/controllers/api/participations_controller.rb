@@ -14,4 +14,11 @@ class Api::ParticipationsController < ApplicationController
     Participation.find(params[:id]).destroy
     head :no_content
   end
+
+  def fix
+    if params[:id].all? {|id| current_user.events.find(Participation.find(id).event_id)}
+      Participation.where(id: params[:id]).update_all(fixed: true)
+    end
+    redirect_back(fallback_location: root_path)
+  end
 end
