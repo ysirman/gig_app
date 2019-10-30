@@ -10,19 +10,24 @@
         i.material-icons location_on
         = @event.location
   .btn-group.row
-    - if user_signed_in?
-      - if organizer?(@event)
-        .organizer.center-align
-          i.material-icons stars
-          | 主催イベント
-      - else
-        .js-participation(data-participation-id="#{current_user.participating?(@event)}" data-event-id="#{@event.id}")
-        .js-clip(data-clip-id="#{current_user.clipping?(@event)}" data-event-id="#{@event.id}")
+    - if user_signed_in? && organizer?(@event)
+      .organizer.center-align
+        i.material-icons stars
+        | 主催イベント
+    - if @event.fixed
+      .btn.disabled.col.s12 募集締切
     - else
-      .participate-btn.col.s12
-        =link_to "参加", new_user_registration_path, class:'btn waves-effect waves-light col s12'
-      .clip-btn.col.s12
-        =link_to "クリップ", new_user_registration_path, class:'btn waves-effect waves-light col s12'
+      - if user_signed_in?
+        - if organizer?(@event)
+          = link_to "募集を締め切る", fix_event_path(@event), class: "btn red waves-effect waves-light col s12", data: { confirm: "一度締め切ると取り消せません。募集を締め切ってよろしいですか？" }
+        - else
+          .js-participation(data-participation-id="#{current_user.participating?(@event)}" data-event-id="#{@event.id}")
+          .js-clip(data-clip-id="#{current_user.clipping?(@event)}" data-event-id="#{@event.id}")
+      - else
+        .participate-btn.col.s12
+          =link_to "参加", new_user_registration_path, class:'btn waves-effect waves-light col s12'
+        .clip-btn.col.s12
+          =link_to "クリップ", new_user_registration_path, class:'btn waves-effect waves-light col s12'
   - if user_signed_in? && organizer?(@event)
     ul.event_nav.center-align
       li
@@ -31,8 +36,3 @@
       li
         i.material-icons delete
         = link_to "イベント削除", @event, method: :delete, data: { confirm: "削除しますか？" }
-    .row
-      - if @event.fixed
-        .btn.disabled.col.s12 募集締切
-      - else
-        = link_to "募集を締め切る", fix_event_path(@event), class: "btn red waves-effect waves-light col s12", data: { confirm: "一度締め切ると取り消せません。募集を締め切ってよろしいですか？" }
