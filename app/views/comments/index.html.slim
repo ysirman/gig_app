@@ -1,0 +1,11 @@
+.row
+  .col.s12.xl3.push-xl9
+    =render 'sidenav_event'
+  .col.s12.xl9.pull-xl3
+    h2.content-heading =@event.title
+    .row
+      .col.s12
+        .event.card.hoverable
+          .card-content
+            = render 'comments/comment_list'
+            = paginate @comments

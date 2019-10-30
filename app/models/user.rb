@@ -28,6 +28,10 @@ class User < ApplicationRecord
   has_many :clips, dependent: :destroy
   has_many :clip_events, through: :clips, source: :event
 
+  # コメントの設定
+  has_many :comments
+  has_many :comment_events, through: :comments
+
   paginates_per 20
 
   # ユーザーをフォローする

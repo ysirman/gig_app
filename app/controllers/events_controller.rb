@@ -14,6 +14,8 @@ class EventsController < ApplicationController
   end
 
   def show
+    @comment = Comment.new
+    @comments = @event.comments.order(created_at: :desc).limit(10)
   end
 
   def edit

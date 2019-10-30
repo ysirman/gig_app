@@ -257,6 +257,7 @@ a:hover {
   .omniauth .btn,
   .event_form .btn,
   .participant_form .btn,
+  .comment_form .btn,
   .searchCondition .btn {
     width: 100%;
   }
@@ -707,6 +708,36 @@ nav {
     padding: 6px;
     .card-content {
       padding: 0px;
+    }
+  }
+}
+
+/*******************************************
+ comment
+*******************************************/
+.comment-list.row {
+  margin: 0px;
+  margin-top: 24px;
+}
+.comment-list {
+  padding-top: 24px;
+  border-top: 1px solid #ccc;
+  .comment {
+    margin-bottom: 8px;
+    padding: 8px 12px;
+    border-radius: 8px;
+    .date,
+    .comment-user {
+      display: inline-block;
+      padding-bottom: 4px;
+      font-size: 12px;
+    }
+    .date {
+      margin-right: 12px;
+    }
+    .description {
+      padding-top: 4px;
+      border-top: 1px solid #aaa;
     }
   }
 }

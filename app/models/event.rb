@@ -19,6 +19,10 @@ class Event < ApplicationRecord
   has_many :clips, dependent: :destroy
   has_many :clip_users, through: :clips, source: :user
 
+  # コメントの設定
+  has_many :comments
+  has_many :comment_users, through: :comments
+
   # kaminariの設定
   paginates_per 10
 

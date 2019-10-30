@@ -39,25 +39,23 @@
                     - @event.participations.each do |participation|
                       - if participation.fixed
                         li = link_to participation.user.name, user_path(participation.user.id)
-                - unless @event.participations.all? {|participation| participation.fixed}
-                  h4.content-heading 参加者候補
-                  - if organizer?(@event)
-                    = form_with(url: fix_api_participations_path, local: true, method: :put, class: "participant_form") do |f|
-                      .field
-                        = f.label :id
-                          - @event.participations.each do |participation|
-                            - unless participation.fixed
-                              label.fix
-                                = f.check_box :id, {multiple: true, class: "filled-in"}, participation.id, nil
-                                span = participation.user.name
-                      .actions
-                        = f.submit "参加者を確定する", :class=>"btn btn-info", data: { confirm: "確定した参加者は取り消せません。参加者を確定してよろしいですか？" }
-                  - else
-                    ul.participant_list
-                      - @event.participations.each do |participation|
-                        li = link_to participation.user.name, user_path(participation.user.id)
-              - else
+              - unless @event.participations.all? {|participation| participation.fixed}
                 h4.content-heading 参加者候補
-                ul.participant_list
-                  - @event.participations.each do |participation|
-                    li = link_to participation.user.name, user_path(participation.user.id)
+                - if @event.fixed && organizer?(@event)
+                  = form_with(url: fix_api_participations_path, local: true, method: :put, class: "participant_form") do |f|
+                    .field
+                      = f.label :id
+                        - @event.participations.each do |participation|
+                          - unless participation.fixed
+                            label.fix
+                              = f.check_box :id, {multiple: true, class: "filled-in"}, participation.id, nil
+                              span = link_to participation.user.name, user_path(participation.user.id)
+                    .actions
+                      = f.submit "参加者を確定する", :class=>"btn btn-info orange", data: { confirm: "確定した参加者は取り消せません。参加者を確定してよろしいですか？" }
+                - else
+                  ul.participant_list
+                    - @event.participations.each do |participation|
+                      - unless participation.fixed
+                        li = link_to participation.user.name, user_path(participation.user.id)
+              - if @event.fixed && (organizer?(@event) || participating_and_fixed?(@event))
+                = render 'comments/comment_list'
