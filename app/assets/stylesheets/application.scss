@@ -502,11 +502,17 @@ nav {
       .info:last-child {
         border-bottom: none;
       }
+      .info.row {
+        margin: 0px;
+      }
     }
   }
   .userList {
     .card .card-content {
       padding: 6px;
+    }
+    .info.row {
+      margin: 0px;
     }
   }
   .user .follow-relation,
@@ -562,9 +568,6 @@ nav {
     }
   }
 
-  .info {
-    border-bottom: 1px solid #DDD;
-  }
   .end {
     padding: 4px 12px;
     font-size: 12px;
@@ -633,6 +636,10 @@ nav {
     }
     .info {
       text-align: center;
+    }
+    .info .genre {
+      padding-bottom: 16px;
+      border-bottom: 1px solid #DDD;
     }
   }
 }
