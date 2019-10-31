@@ -13,7 +13,7 @@ h4.content-heading イベント打ち合わせ
     = f.submit "コメントする", :class=>"btn btn-info"
 .comment-list.row
   - @comments.each do |comment|
-    div class="comment col s11 #{comment.user.id == current_user.id ? 'push-s1 yellow lighten-4' : 'blue lighten-5'}"
+    div class="comment col s11 #{comment.user.id == current_user.id ? 'push-s1 blue lighten-4' : 'blue lighten-5'}"
       .date = l(comment.created_at, format: :default)
       .comment-user = link_to comment.user.name, user_path(comment.user_id)
       .description = comment.description
