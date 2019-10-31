@@ -6,10 +6,15 @@ Rails.application.routes.draw do
   get "/disclaimer", to: "home#disclaimer"
 
   resources :events do
+    member do
+      get :fix, to: "events/fix#update"
+    end
     collection do
       get :search
     end
+    resources :comments, only: [:index, :create]
   end
+
   devise_for :users, controllers: {
     omniauth_callbacks: "users/omniauth_callbacks",
     registrations: "users/registrations"
@@ -25,9 +30,14 @@ Rails.application.routes.draw do
       get :search
     end
   end
+
   namespace "api" do
     resources :follow_relations, only: [:create, :destroy]
-    resources :participations, only: [:create, :destroy]
+    resources :participations, only: [:create, :destroy] do
+      collection do
+        put :fix, to: "participations/fix#update"
+      end
+    end
     resources :clips, only: [:create, :destroy]
   end
 end

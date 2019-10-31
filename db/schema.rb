@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 # This file is auto-generated from the current state of the database. Instead
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
@@ -12,7 +10,8 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_10_20_042320) do
+ActiveRecord::Schema.define(version: 2019_10_27_133321) do
+
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -24,6 +23,16 @@ ActiveRecord::Schema.define(version: 2019_10_20_042320) do
     t.index ["event_id"], name: "index_clips_on_event_id"
     t.index ["user_id", "event_id"], name: "index_clips_on_user_id_and_event_id", unique: true
     t.index ["user_id"], name: "index_clips_on_user_id"
+  end
+
+  create_table "comments", force: :cascade do |t|
+    t.text "description"
+    t.integer "user_id"
+    t.integer "event_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["event_id"], name: "index_comments_on_event_id"
+    t.index ["user_id"], name: "index_comments_on_user_id"
   end
 
   create_table "events", force: :cascade do |t|
@@ -38,6 +47,7 @@ ActiveRecord::Schema.define(version: 2019_10_20_042320) do
     t.datetime "updated_at", null: false
     t.string "genre", default: "ALL", null: false
     t.integer "user_id", default: 0, null: false
+    t.boolean "fixed", default: false, null: false
   end
 
   create_table "follow_relations", force: :cascade do |t|
@@ -55,6 +65,7 @@ ActiveRecord::Schema.define(version: 2019_10_20_042320) do
     t.integer "event_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "fixed", default: false, null: false
     t.index ["event_id"], name: "index_participations_on_event_id"
     t.index ["user_id", "event_id"], name: "index_participations_on_user_id_and_event_id", unique: true
     t.index ["user_id"], name: "index_participations_on_user_id"
@@ -82,4 +93,5 @@ ActiveRecord::Schema.define(version: 2019_10_20_042320) do
     t.index ["provider", "uid"], name: "index_users_on_provider_and_uid", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
+
 end

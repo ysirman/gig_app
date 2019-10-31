@@ -114,6 +114,7 @@ a:hover {
 }
 
 .organizer {
+  margin-bottom: 8px;
   padding: 3px;
   font-size: 12px;
   font-weight: 700;
@@ -210,7 +211,7 @@ a:hover {
     background-color: #DDD;
   }
   .is-active:before {
-    content: "参加中";
+    content: "参加申込済";
   }
   .is-active:hover {
     background-color: red;
@@ -255,6 +256,8 @@ a:hover {
   .user_form.btn,
   .omniauth .btn,
   .event_form .btn,
+  .participant_form .btn,
+  .comment_form .btn,
   .searchCondition .btn {
     width: 100%;
   }
@@ -499,11 +502,17 @@ nav {
       .info:last-child {
         border-bottom: none;
       }
+      .info.row {
+        margin: 0px;
+      }
     }
   }
   .userList {
     .card .card-content {
       padding: 6px;
+    }
+    .info.row {
+      margin: 0px;
     }
   }
   .user .follow-relation,
@@ -559,8 +568,11 @@ nav {
     }
   }
 
-  .info {
-    border-bottom: 1px solid #DDD;
+  .end {
+    padding: 4px 12px;
+    font-size: 12px;
+    color: #fff;
+    background-color: #333;
   }
   .venue {
     color: #888;
@@ -569,6 +581,7 @@ nav {
     }
   }
   .title {
+    margin-top: 4px;
     margin-bottom: 10px;
     font-size: 1.4rem;
     font-weight: 700;
@@ -623,6 +636,10 @@ nav {
     }
     .info {
       text-align: center;
+    }
+    .info .genre {
+      padding-bottom: 16px;
+      border-bottom: 1px solid #DDD;
     }
   }
 }
@@ -684,6 +701,13 @@ nav {
   p {
     line-height: 1.8;
   }
+  .participant_list {
+    li {
+      margin-left: 20px;
+      line-height: 1.8;
+      list-style: disc;
+    }
+  }
 }
 
 @media only screen and (max-width: 1200px) {
@@ -691,6 +715,36 @@ nav {
     padding: 6px;
     .card-content {
       padding: 0px;
+    }
+  }
+}
+
+/*******************************************
+ comment
+*******************************************/
+.comment-list.row {
+  margin: 0px;
+  margin-top: 24px;
+}
+.comment-list {
+  padding-top: 24px;
+  border-top: 1px solid #ccc;
+  .comment {
+    margin-bottom: 8px;
+    padding: 8px 12px;
+    border-radius: 8px;
+    .date,
+    .comment-user {
+      display: inline-block;
+      padding-bottom: 4px;
+      font-size: 12px;
+    }
+    .date {
+      margin-right: 12px;
+    }
+    .description {
+      padding-top: 4px;
+      border-top: 1px solid #aaa;
     }
   }
 }
@@ -714,6 +768,15 @@ nav {
   margin-bottom: 10px;
   .actions {
     margin-top: 10px;
+  }
+}
+.participant_form {
+  .field {
+    margin-bottom: 12px;
+    .fix {
+      display: block;
+      line-height: 2.4;
+    }
   }
 }
 

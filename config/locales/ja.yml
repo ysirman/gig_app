@@ -65,7 +65,8 @@ ja:
         location: 会場
         target_price: 参加費
         description: イベント詳細
-      
+      comment:
+        description: コメント内容
   views:
     pagination:
       truncate: …
