@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class Api::Participations::FixStatusController < ApplicationController
+class Api::Participations::FixController < ApplicationController
   before_action :authenticate_user!
 
   def update

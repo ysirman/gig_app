@@ -7,7 +7,7 @@ Rails.application.routes.draw do
 
   resources :events do
     member do
-      get :fix, to: "events/fix_status#update"
+      get :fix, to: "events/fix#update"
     end
     collection do
       get :search
@@ -35,7 +35,7 @@ Rails.application.routes.draw do
     resources :follow_relations, only: [:create, :destroy]
     resources :participations, only: [:create, :destroy] do
       collection do
-        put :fix, to: "participations/fix_status#update"
+        put :fix, to: "participations/fix#update"
       end
     end
     resources :clips, only: [:create, :destroy]

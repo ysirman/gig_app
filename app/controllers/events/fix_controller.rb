@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class Events::FixStatusController < ApplicationController
+class Events::FixController < ApplicationController
   before_action :authenticate_user!
   before_action :correct_user
 
