@@ -21,7 +21,7 @@
         .target 定員 #{event.target_join_num}
         .btn-group.row
           - if event.fixed
-            .btn.disabled 募集終了
+            .btn.disabled  = t(:'activerecord.attributes.event.fixed')
           - else
             - if user_signed_in?
               - if organizer?(event)

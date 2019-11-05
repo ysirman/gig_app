@@ -256,7 +256,7 @@ a:hover {
   .user_form.btn,
   .omniauth .btn,
   .event_form .btn,
-  .participant_form .btn,
+  .participation_form .btn,
   .comment_form .btn,
   .searchCondition .btn {
     width: 100%;
@@ -701,7 +701,8 @@ nav {
   p {
     line-height: 1.8;
   }
-  .participant_list {
+  .participation_list,
+  .fixed_participation_list {
     li {
       margin-left: 20px;
       line-height: 1.8;
@@ -770,7 +771,7 @@ nav {
     margin-top: 10px;
   }
 }
-.participant_form {
+.participation_form {
   .field {
     margin-bottom: 12px;
     .fix {

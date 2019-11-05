@@ -65,6 +65,7 @@ ja:
         location: 会場
         target_price: 参加費
         description: イベント詳細
+        fixed: 募集終了
       comment:
         description: コメント内容
   views:
@@ -80,3 +81,5 @@ ja:
       update: "内容が更新されました。"
       destroy: "登録内容が削除されました。"
       destroy_omniauth: "アカウント連携が解除されました。"
+    failure:
+      update: "内容が更新されませんでした"
