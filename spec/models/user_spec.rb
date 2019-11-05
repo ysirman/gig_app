@@ -14,12 +14,6 @@ RSpec.describe User, type: :model do
     expect(user.errors[:name]).to include(I18n.t :"errors.messages.blank")
   end
 
-  it "is invalid without a login_name" do
-    user = FactoryBot.build(:user, login_name: nil)
-    user.valid?
-    expect(user.errors[:login_name]).to include(I18n.t :"errors.messages.blank")
-  end
-
   it "is invalid without an email address" do
     user = FactoryBot.build(:user, email: nil)
     user.valid?
@@ -50,13 +44,5 @@ RSpec.describe User, type: :model do
     user = FactoryBot.build(:user, email: duplicate_email)
     user.valid?
     expect(user.errors[:email]).to include(I18n.t :"errors.messages.taken")
-  end
-
-  it "is invalid with a duplicate login_name" do
-    duplicate_login_name = "hogesan"
-    FactoryBot.create(:user, login_name: duplicate_login_name)
-    user = FactoryBot.build(:user, login_name: duplicate_login_name)
-    user.valid?
-    expect(user.errors[:login_name]).to include(I18n.t :"errors.messages.taken")
   end
 end

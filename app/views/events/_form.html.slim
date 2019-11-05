@@ -13,7 +13,7 @@
   .field.require
     = f.label :gig_date
     = f.text_field :gig_date, class:"datepicker", placeholder:"From", value: (l(@event.gig_date, format: :short_date_only) if @event.gig_date)
-  .field.require
+  .field.require.region
     = f.label :region
     = f.select :region, prefectures, value: (params[:region] if params[:region])
   .field

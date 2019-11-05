@@ -13,17 +13,20 @@ class CommentsController < ApplicationController
   def create
     @comment = Comment.new(comment_params)
     @comment.user_id = current_user.id
-    @comment.event_id = params[:event_id]
     if @comment.save
       redirect_to event_path(params[:event_id]), notice: t(:"flash.success.create")
     else
-      redirect_to event_path(params[:event_id]), alert: "登録に失敗しました。"
+      @event = Event.find(params[:event_id])
+      @comments = @event.comments.order(created_at: :desc).limit(10)
+      render "events/show"
     end
   end
 
   private
     def comment_params
-      params.require(:comment).permit(:description)
+      params.require(:comment).permit(
+        :description,
+        :event_id)
     end
 
     def correct_user

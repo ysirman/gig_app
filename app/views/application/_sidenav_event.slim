@@ -15,11 +15,11 @@
         i.material-icons stars
         | 主催イベント
     - if @event.fixed
-      .btn.disabled.col.s12 募集締切
+      .btn.disabled.col.s12 = t(:'activerecord.attributes.event.fixed')
     - else
       - if user_signed_in?
         - if organizer?(@event)
-          = link_to "募集を締め切る", fix_event_path(@event), class: "btn red waves-effect waves-light col s12", data: { confirm: "一度締め切ると取り消せません。募集を締め切ってよろしいですか？" }
+          = link_to "募集を締め切る", fix_event_path(@event), class: "btn orange waves-effect waves-light col s12", data: { confirm: "一度締め切ると取り消せません。募集を締め切ってよろしいですか？" }
         - else
           .js-participation(data-participation-id="#{current_user.participating?(@event)}" data-event-id="#{@event.id}")
           .js-clip(data-clip-id="#{current_user.clipping?(@event)}" data-event-id="#{@event.id}")

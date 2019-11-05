@@ -11,7 +11,7 @@
   .field.require
     = f.label :genre, "ジャンル（スペース区切りで複数のジャンルを登録できます。）"
     = f.text_field :genre, autocomplete: "genre"
-  .field.require
+  .field.require.region
     = f.label :region
     = f.select :region, prefectures, value: (params[:region] if params[:region])
   .field.profile
