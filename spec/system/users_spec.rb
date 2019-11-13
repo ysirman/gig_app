@@ -25,7 +25,7 @@ RSpec.feature "Users", type: :system do
     visit new_user_session_path
     fill_in I18n.t(:"activerecord.attributes.user.email"), with: user.email
     fill_in I18n.t(:"activerecord.attributes.user.password"), with: user.password
-    page.find(".actions").click_on I18n.t(:"devise.shared.links.sign_in")
+    page.find(".user_form > .actions").click_on I18n.t(:"devise.shared.links.sign_in")
     expect(page).to have_content I18n.t(:"devise.sessions.signed_in")
     expect(page).to have_content user.name
   end
