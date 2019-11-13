@@ -10,7 +10,7 @@ RSpec.feature "Comments", type: :system do
   end
 
   scenario "can be created by event participant" do
-    participation = FactoryBot.create(:participation, user_id: @user.id, event_id: @event.id, fixed: true)
+    FactoryBot.create(:participation, user_id: @user.id, event_id: @event.id, fixed: true)
     visit event_path(@event)
     expect {
       find("#comment_description").set("テスト用のコメント")
@@ -20,7 +20,7 @@ RSpec.feature "Comments", type: :system do
   end
 
   scenario "can be shown by event participant" do
-    participation = FactoryBot.create(:participation, user_id: @user.id, event_id: @event.id, fixed: true)
+    FactoryBot.create(:participation, user_id: @user.id, event_id: @event.id, fixed: true)
     comment = FactoryBot.create(:comment, user_id: @user.id, event_id: @event.id)
     visit event_path(@event)
     click_on "コメントをもっと見る"

@@ -27,7 +27,7 @@ RSpec.feature "Clips", type: :system do
   end
 
   scenario "can be deleted by owner", js: true do
-    clip = FactoryBot.create(:clip, user_id: @user.id, event_id: @event.id)
+    FactoryBot.create(:clip, user_id: @user.id, event_id: @event.id)
     visit root_path
     expect {
       within(".eventList") do
