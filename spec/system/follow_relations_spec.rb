@@ -34,7 +34,7 @@ RSpec.feature "FollowRelations", type: :system do
   end
 
   scenario "of followed can be deleted by owner", js: true do
-    follow_relation = FactoryBot.create(:follow_relation, follower_id: @user.id, followed_id: @other_user.id)
+    FactoryBot.create(:follow_relation, follower_id: @user.id, followed_id: @other_user.id)
     visit root_path
     expect {
       within(".userList") do

@@ -27,7 +27,7 @@ RSpec.feature "Participations", type: :system do
   end
 
   scenario "can be deleted by owner", js: true do
-    participation = FactoryBot.create(:participation, user_id: @user.id, event_id: @event.id)
+    FactoryBot.create(:participation, user_id: @user.id, event_id: @event.id)
     visit root_path
     expect {
       within(".eventList") do
@@ -41,7 +41,7 @@ RSpec.feature "Participations", type: :system do
     event = FactoryBot.create(:event, user_id: @user.id, fixed: true)
     candidate = FactoryBot.create(:user)
     participation = FactoryBot.create(:participation, event_id: event.id, user_id: candidate.id)
-    other_participation = FactoryBot.create(:participation, event_id: event.id)
+    FactoryBot.create(:participation, event_id: event.id) # other participation
     visit event_path(event.id)
     expect(page).to have_content "参加者候補"
     target_checkbox_id = "id_#{participation.id}"
