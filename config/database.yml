@@ -58,7 +58,6 @@ development:
 test:
   <<: *default
   database: gig_app_test
-  username: gig_user
 
 # As with config/secrets.yml, you never want to store sensitive information,
 # like your database password, in your source code. If your source code is
@@ -81,7 +80,3 @@ test:
 #
 production:
   <<: *default
-  host: <%= Rails.application.credentials.rds[:host] %>
-  database: <%= Rails.application.credentials.rds[:database] %>
-  username: <%= Rails.application.credentials.rds[:username] %>
-  password: <%= Rails.application.credentials.rds[:password] %>
