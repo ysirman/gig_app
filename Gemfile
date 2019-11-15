@@ -49,6 +49,7 @@ gem "rails-i18n"
 gem "devise"
 gem "omniauth"
 gem "omniauth-twitter"
+gem "omniauth-rails_csrf_protection"
 gem "dotenv-rails", "~> 2.1", ">= 2.1.1"
 gem "kaminari"
 

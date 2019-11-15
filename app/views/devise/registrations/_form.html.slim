@@ -32,6 +32,6 @@
       .btn.blue.disabled
         | TWITTERアカウント連携済み
     - else
-      = link_to "TWITTERアカウントと連携", omniauth_authorize_path(resource_name, :twitter), class: "btn blue"
+      = link_to "TWITTERアカウントと連携", omniauth_authorize_path(resource_name, :twitter), class: "btn blue", method: :post
   - else
-    = link_to t(:'devise.shared.links.sign_in_with_provider', provider: :twitter), omniauth_authorize_path(resource_name, :twitter), class: "btn blue"
+    = link_to t(:'devise.shared.links.sign_in_with_provider', provider: :twitter), omniauth_authorize_path(resource_name, :twitter), class: "btn blue", method: :post
