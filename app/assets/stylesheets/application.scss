@@ -96,6 +96,11 @@ a:hover {
   font-size: 0.8rem;
 }
 
+.test-login .small {
+  display: inline-block;
+  margin-top: 6px;
+}
+
 /*******************************************
  icon
 *******************************************/
@@ -138,6 +143,9 @@ a:hover {
 @media only screen and (max-width: 1200px) {
   .genre {
     margin: 5px 0px;
+  }
+  .eventList .organizer {
+    margin-bottom: 0px;
   }
 }
 
@@ -258,15 +266,15 @@ a:hover {
 .omniauth {
   margin-bottom: 10px;
 }
+
 @media only screen and (max-width: 1200px) {
-  .user_form .btn,
-  .user_form.btn,
+  form .btn,
   .omniauth .btn,
-  .event_form .btn,
-  .participation_form .btn,
-  .comment_form .btn,
-  .searchCondition .btn {
+  .destroy_user .btn {
     width: 100%;
+  }
+  .participate-btn {
+    margin-bottom: 0px;
   }
 }
 
@@ -610,7 +618,7 @@ nav {
 @media only screen and (max-width: 1200px) {
   .eventList {
     .card-content {
-      padding: 0px 11px 2px 11px;
+      padding: 0px 11px 8px 11px;
     }
     .date {
       margin-bottom: 12px;

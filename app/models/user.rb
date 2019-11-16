@@ -37,17 +37,22 @@ class User < ApplicationRecord
   def follow(other_user)
     following << other_user
   end
+
   # ユーザーをフォロー解除する
   def unfollow(other_user)
     active_follow_relations.find_by(followed_id: other_user.id).destroy
   end
-  # 現在のユーザーがフォローしてたらtrueを返す
-  def following?(other_user)
-    following.include?(other_user)
+
+  # 現在のユーザーがフォローしていたら id を返す
+  def following_id?(other_user)
+    follow_relation = active_follow_relations.find_by(followed_id: other_user.id)
+    if follow_relation
+      follow_relation.id
+    end
   end
 
   # イベントに参加していたら id を返す
-  def participating?(event)
+  def participating_id?(event)
     participation = participations.find_by(event_id: event.id)
     if participation
       participation.id
@@ -55,7 +60,7 @@ class User < ApplicationRecord
   end
 
   # クリップしていたら id を返す
-  def clipping?(event)
+  def clipping_id?(event)
     clip = clips.find_by(event_id: event.id)
     if clip
       clip.id

@@ -29,8 +29,8 @@
                   i.material-icons stars
                   | 主催イベント
               - else
-                .js-participation(data-participation-id="#{current_user.participating?(event)}" data-event-id="#{event.id}")
-                .js-clip(data-clip-id="#{current_user.clipping?(event)}" data-event-id="#{event.id}")
+                .js-participation(data-participation-id="#{current_user.participating_id?(event)}" data-event-id="#{event.id}")
+                .js-clip(data-clip-id="#{current_user.clipping_id?(event)}" data-event-id="#{event.id}")
             - else
               .participate-btn.col.s6.xl12
                 =link_to "参加", new_user_registration_path, class:'btn waves-effect waves-light'
