@@ -21,8 +21,8 @@
         - if organizer?(@event)
           = link_to "募集を締め切る", fix_event_path(@event), class: "btn orange waves-effect waves-light col s12", data: { confirm: "一度締め切ると取り消せません。募集を締め切ってよろしいですか？" }
         - else
-          .js-participation(data-participation-id="#{current_user.participating?(@event)}" data-event-id="#{@event.id}")
-          .js-clip(data-clip-id="#{current_user.clipping?(@event)}" data-event-id="#{@event.id}")
+          .js-participation(data-participation-id="#{current_user.participating_id?(@event)}" data-event-id="#{@event.id}")
+          .js-clip(data-clip-id="#{current_user.clipping_id?(@event)}" data-event-id="#{@event.id}")
       - else
         .participate-btn.col.s12
           =link_to "参加", new_user_registration_path, class:'btn waves-effect waves-light col s12'

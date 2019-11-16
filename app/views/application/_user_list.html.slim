@@ -20,11 +20,10 @@
           - if user_signed_in?
             - unless current_user?(user)
               .col.s12.xl4
-                - follow_relation_id = current_user.following?(user) ? current_user.active_follow_relations.find_by(followed_id: user.id).id : nil
-                .js-follow-relation(data-follow-relation-id="#{follow_relation_id}" data-followed-id="#{user.id}")
+                .js-follow-relation(data-follow-relation-id="#{current_user.following_id?(user)}" data-followed-id="#{user.id}")
           - else
-            .col.s12.xl4
-              =link_to "フォロー", new_user_registration_path, class:'follow-relation btn-small  waves-effect waves-light'
+            .follow-relation.col.s12.xl4
+              =link_to "フォロー", new_user_registration_path, class:'follow-relation btn-small waves-effect waves-light'
         .info.row
           .col.s12 
             ul.genre
