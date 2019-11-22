@@ -24,10 +24,10 @@
           .js-participation(data-participation-id="#{current_user.participating_id?(@event)}" data-event-id="#{@event.id}")
           .js-clip(data-clip-id="#{current_user.clipping_id?(@event)}" data-event-id="#{@event.id}")
       - else
-        .participate-btn.col.s12
-          =link_to "参加", new_user_registration_path, class:'btn waves-effect waves-light col s12'
-        .clip-btn.col.s12
-          =link_to "クリップ", new_user_registration_path, class:'btn waves-effect waves-light col s12'
+        .participate-btn.col.s6.xl12
+          =link_to "参加", new_user_registration_path, class:'btn waves-effect waves-light'
+        .clip-btn.col.s6.xl12
+          =link_to "クリップ", new_user_registration_path, class:'btn waves-effect waves-light'
   - if user_signed_in? && organizer?(@event)
     ul.event_nav.center-align
       li
