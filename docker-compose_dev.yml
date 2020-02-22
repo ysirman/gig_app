@@ -1,0 +1,28 @@
+version: '3'
+services:
+  app-dev:
+    build:
+      context: .
+      dockerfile: Dockerfile_dev
+    command: bash -c "rm -f tmp/pids/server.pid && bundle exec rails s -p 3000 -b '0.0.0.0'"
+    volumes:
+      - .:/gig_app  # host側のファイルをコンテナと共有する
+    ports:
+      - 3000:3000   # 公開先：コンテナ内部の転送先
+    depends_on:
+      - db-dev
+    # pryでデバッグする時に必要な設定
+    tty: true
+    stdin_open: true
+  db-dev:
+    image: postgres:10.1
+    ports:
+      - 5432:5432
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=mysecretpassword1234
+      - PGPASSWORD=mysecretpassword1234
+    volumes:
+      - db-volume:/var/lib/postgresql/data
+volumes:
+  db-volume:
