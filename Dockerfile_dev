@@ -9,7 +9,6 @@ RUN apt-get update && \
 RUN gem install bundler
 
 # Rails App
-ENV APP_DIR = /gig_app
 RUN mkdir /gig_app
 WORKDIR /gig_app
 COPY Gemfile /gig_app/Gemfile
@@ -17,7 +16,3 @@ COPY Gemfile.lock /gig_app/Gemfile.lock
 RUN bundle install
 RUN yarn install
 COPY . /gig_app
-RUN mkdir -p tmp/sockets
-
-# Start the main process.
-CMD bundle exec puma
