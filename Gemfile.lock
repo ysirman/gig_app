@@ -165,7 +165,8 @@ GEM
       byebug (~> 11.0)
       pry (~> 0.10)
     public_suffix (4.0.1)
-    puma (3.12.2)
+    puma (4.3.9)
+      nio4r (~> 2.0)
     rack (2.0.8)
     rack-proxy (0.6.5)
       rack
@@ -327,7 +328,7 @@ DEPENDENCIES
   omniauth-twitter
   pg (>= 0.18, < 2.0)
   pry-byebug
-  puma (~> 3.11)
+  puma (~> 4.3)
   rails (~> 5.2.0)
   rails-i18n
   rspec-rails (>= 3.7.0)
